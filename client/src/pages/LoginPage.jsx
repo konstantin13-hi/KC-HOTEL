@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function LoginPage(){
     return (
        <div className="flex items-center justify-around grow"> 
@@ -8,6 +10,10 @@ export default function LoginPage(){
     <input type="text" placeholder="password"/>
     <button className="primary">Login</button>
 </form>
+     <div className="p-2 text-center">
+        Dont have an account ?  
+        <Link className="underline" to={"/register"}>Register here </Link>
+     </div>
 
         </div>
         </div>
