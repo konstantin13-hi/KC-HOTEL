@@ -3,3 +3,4 @@ yarn add cors    in api
 yarn add mongose   in api 
 yarn add dotenv     in api
 yarn add bcryptjs    in api
+yarn add jsonwebtoken  in api
