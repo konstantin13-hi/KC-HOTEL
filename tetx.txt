@@ -1,3 +1,5 @@
 yarn add axios   in api 
 yarn add cors    in api
 yarn add mongose   in api 
+yarn add dotenv     in api
+yarn add bcryptjs    in api
