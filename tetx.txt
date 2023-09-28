@@ -1,0 +1,2 @@
+yarn add axios   in api 
+yarn add cors    in api
