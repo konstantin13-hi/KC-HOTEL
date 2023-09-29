@@ -5,26 +5,31 @@ const jwt = require('jsonwebtoken');
 const User = require('./modules/User')
 const bcrypt =require('bcryptjs')
 const bcryptSalt = bcrypt.genSaltSync(10);
-
-require('dotenv').config()
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 const jwtSecret = 'adasdafsdgagsdfgs';
+require('dotenv').config()
+mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopology: true });
+
+
 
 app.use(express.json());
+app.use(cookieParser());
+
 app.use(cors({
 credentials:true,
 origin:'http://localhost:5173',
 
 }
     ));
- const mongoose = require('mongoose');
- mongoose.connect(process.env.MONGO_URL);
+
 
 
 app.get('/test',(req,res)=>{
     res.json('test ok');
 })
 
-app.listen(4000);
+
 
 app.post('/register',async(req,res)=>{
     const {name,email,password}=req.body;
@@ -49,9 +54,12 @@ app.post('/login',async(req,res)=>{
   if(userDoc){
     const passOk=bcrypt.compareSync(password,userDoc.password)
    if(passOk){
-    jwt.sign({email:userDoc.email,id:userDoc.id},jwtSecret,{},(err,token)=>{
+    jwt.sign({
+        email:userDoc.email,
+        id:userDoc._id},
+        jwtSecret,{},(err,token)=>{
         if(err)throw err;
-        res.cookie('token',token).json('pass is ok');
+        res.cookie('token',token).json(userDoc);
     }) ;
 }
    else{
@@ -64,4 +72,20 @@ app.post('/login',async(req,res)=>{
 }
 )
 
-//sBbhgiwCCQ6ImopI
+app.get('/profile',(req,res)=>{
+
+    const {token} = req.cookies;
+    if (token){
+        jwt.verify(token,jwtSecret,{},async(err,userData)=>{
+            if(err) throw err;
+            const {name,email,_id} = await User.findById(userData.id);
+            res.cookie('token',token).json({name,email,_id});
+
+        })
+    }
+    else{
+        res.json(null) ;
+    }
+    
+})
+app.listen(4000);
