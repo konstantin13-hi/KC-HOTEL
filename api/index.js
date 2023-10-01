@@ -8,6 +8,7 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser')
 const jwtSecret = 'adasdafsdgagsdfgs';
+const imageDownloader =require('image-downloader')
 require('dotenv').config()
 mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopolo
 
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname+'/uploads'))
 
 app.use(cors({
 credentials:true,
@@ -91,5 +93,16 @@ app.get('/profile',(req,res)=>{
 
 app.post('/logout',(req,res)=>{
    res.cookie('token','').json(true) ;
+})
+console.log({__dirname});
+app.post('/upload-by-link',async(req,res)=>{
+    const {link} =req.body;
+    const newName = 'photo' + Date.now() + '.jpg';
+    await imageDownloader.image(
+        {url: link,
+        dest: __dirname +'/uploads/' + newName}
+    );
+    res.json(newName);
+
 })
 app.listen(4000);
