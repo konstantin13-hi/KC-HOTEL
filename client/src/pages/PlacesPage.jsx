@@ -66,50 +66,45 @@ export default function PlacesPage(){
                         {preInput('Title','Title for your place....')}
                         <input type ="text" value={title} onChange={event => {setTitle(event.target.value)}} placeholder="title............"/>
 
-                        <h2 className="text-2xl mt-4"> Address </h2>
-                        <p className="text-gray-500">Address to this place.... </p>
+                        {preInput('Address','Address to this place....')}
                         <input type ="text" value={address} onChange={event => {setAddress(event.target.value)}} placeholder="address............"/>
-                        <h2 className="text-2xl mt-4"> Photos </h2>
-                        <p className="text-gray-500">more = better </p>
+
+                        {preInput('Photos','more = better')}
                        <PhotosUploder/>
-                         <h2 className="text-2xl mt-4"> Description </h2>
-                        <p className="text-gray-500">description of the place</p>
+
+                       {preInput('Description','description of the place')}
                         <textarea value={description} onChange={event => {setDescription(event.target.value)}}/>
-                        <h2 className="text-2xl mt-4"> Perks </h2>
-                        <p className="text-gray-500">select all the perks of your place</p>
+
+                        {preInput('Perks','select all the perks of your place')}
                         <div className="grid gap-1 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 ">
                             <Perks selected={perks} onChange={setPerks}/>
                         </div>
-            
+                  </form>
 
+                  {preInput('Extra Info','house rules , ect')}
+                 <textarea value={extraInfo} onChange={event => {setExtraInfo(event.target.value)}} />
 
-            </form>
-            <h2 className="text-2xl mt-4"> Extra Info </h2>
-            <p className="text-gray-500">house rules , ect</p>
-            <textarea value={extraInfo} onChange={event => {setExtraInfo(event.target.value)}} />
-            <h2 className="text-2xl mt-4"> Check in&out times </h2>
-            <p className="text-gray-500">add check in and out</p>
+                 {preInput('Check in&out times','add check in and out')}
+                <div className="grid gap-2 sm:grid-cols-3">
+                        <div >
+                            <h3 className="mt-2 -mb-1">Check in time </h3>
+                            <input type="text" value={checkIn} onChange={event => {setCheckIn(event.target.value)}} placeholder="14:00"/> 
+                        </div>
 
-            <div className="grid gap-2 sm:grid-cols-3">
-                    <div >
-                        <h3 className="mt-2 -mb-1">Check in time </h3>
-                        <input type="text" value={checkIn} onChange={event => {setCheckIn(event.target.value)}} placeholder="14:00"/> 
-                    </div>
+                        <div>
+                            <h3 className="mt-2 -mb-1">Check out time </h3>
+                            <input type="text" value={checkOut} onChange={event => {setCheckOut(event.target.value)}} /> 
+                        </div>
 
-                    <div>
-                        <h3 className="mt-2 -mb-1">Check out time </h3>
-                        <input type="text" value={checkOut} onChange={event => {setCheckOut(event.target.value)}} /> 
-                    </div>
-
-                    <div>
-                         <h3 className="mt-2 -mb-1">Max number of guest </h3>
-                         <input type="number" value={maxGuest} onChange={event => {setMaxGuest(event.target.value)}} /> 
-                    </div>
-                          
-            </div>
-                    <button className="primary my-4">Save</button>
-              
+                        <div>
+                            <h3 className="mt-2 -mb-1">Max number of guest </h3>
+                            <input type="number" value={maxGuest} onChange={event => {setMaxGuest(event.target.value)}} /> 
+                        </div>
+                            
                 </div>
+                <button className="primary my-4">Save</button>
+              
+            </div>
             )}
         </div>
         
