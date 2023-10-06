@@ -63,31 +63,37 @@ export default function PlacesFormPage(){
     }
 
 
-    async function addNewPlace(event) {
-        event.preventDefault(); 
-        // console.log(addedPhotos);
-      
-
-        
-        await axios.post('/places', {
-            title, address, addedPhotos,
-            description, perks, extraInfo,
-            checkIn, checkOut, maxGuests
-            });
-            setRedirect('/account/places')
-
+    async function savePlace(ev) {
+        ev.preventDefault ();
+        const placeData = {
+        title, address, addedPhotos, 
+        description,
+         perks, extraInfo,
+          checkIn, 
+          checkOut, maxGuests
+        };
+        if (id) {
+     const {data}  =  await axios.put('/places', {id, ...placeData});
+       console.log(data);
+        setRedirect ('/account/places');
+        } else {
+         await axios.post('/places', placeData);
+        setRedirect (true);
+        }
     }
 
-        if (redirect) {
-            return <Navigate to={redirect} />
-        }
+
+
+    if (redirect) {
+        return <Navigate to={redirect} />
+    }
 
 
 
 return (
 
          <div className="p-8">
-                    <form onSubmit={addNewPlace}>
+                    <form onSubmit={savePlace}>
                         {preInput('Title','Title for your place....')}
                         <input type ="text" value={title} onChange={event => {setTitle(event.target.value)}} placeholder="title............"/>
 
