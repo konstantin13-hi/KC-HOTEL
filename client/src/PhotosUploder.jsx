@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function PhotosUploder(){
-    const[addedPhotos,setAddedPhotos] = useState([]);
+export default function PhotosUploder({addedPhotos,onChange}){
     const[photoLink,setPhotoLink] = useState('');
-
+   
     async function addPpotoBylink(event){
         event.preventDefault();
          const {data : filename} =   await axios.post('/upload-by-link',{link:photoLink})
-         setAddedPhotos(prev =>{
+         onChange(prev =>{
             return[...prev,filename]
          })
          setPhotoLink('')
@@ -28,7 +27,7 @@ export default function PhotosUploder(){
             })
             .then(response => {
               const { data: filenames } = response;
-              setAddedPhotos(prev => {
+              onChange(prev => {
                 return [...prev, ...filenames];
               });
             })
