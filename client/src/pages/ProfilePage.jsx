@@ -23,19 +23,7 @@ export default function ProfilePage(){
   if(!user && ready && !redirect){
     return <Navigate to={'/login'}/>
   }
-  function linkClasses(type = null){
-    let string = 'inline-flex py-2 px-6 gap-1 rounded-full';
-    if (type ===subpage){
-        string +=' bg-primary text-white';
 
-    }
-    else{
-      string += ' bg-gray-200'
-    }
-   
-    return string;
-
-  }
 
  async function logOut(){
    await axios.post('/logout');

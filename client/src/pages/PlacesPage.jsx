@@ -13,7 +13,7 @@ export default function PlacesPage(){
     useEffect(() => {
         axios.get('/places')
           .then(({ data }) => {
-            console.log(data);
+            // console.log(data);
             setPlaces(data);
           })
           .catch(error => {
@@ -36,10 +36,10 @@ export default function PlacesPage(){
 
                 </div>
 
-                <div>
+                <div className="mt-4">
   {places.length > 0 && places.map(place => (
-    <div className="bg-gray-200 p-2 rounded-2xl gap-2" key={place._id}>
-      <div className="flex w-32 h-32 bg-gray-400 grow shrink-0">
+    <Link to={'/account/places/'+place._id} className="flex cursor-pointer bg-gray-200 p-2 rounded-2xl gap-2 mt-4" key={place._id}>
+      <div className="flex w-32 h-32 bg-gray-400 shrink-0">
         {place.photos.length > 0 && (
           <img src={place.photos[0]} alt={place.title} />
         )}
@@ -52,7 +52,7 @@ export default function PlacesPage(){
     
       
       {place.owner}
-      </div>
+      </Link>
   ))}
 </div>
 

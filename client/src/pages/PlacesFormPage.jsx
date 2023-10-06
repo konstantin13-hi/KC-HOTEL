@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import Perks from "../Perks";
 import axios from "axios";
@@ -8,6 +8,9 @@ import { Navigate } from "react-router-dom"
 
 
 export default function PlacesFormPage(){
+   const {id} = useParams();
+
+
     const[title,setTitle] = useState('');
     const[address,setAddress] = useState('');
     const[description,setDescription] = useState('');
@@ -19,6 +22,25 @@ export default function PlacesFormPage(){
     const[addedPhotos,setAddedPhotos] = useState([]);
     const [redirect,setRedirect] = useState(null);
 
+    useEffect(() => {
+        if (!id) {
+          return;
+        }
+       axios.get('/places/'+id).then(response =>{
+        const {data} =response ;
+        console.log(data.title);
+        setTitle(data.title);
+        setAddress (data.address);
+        setAddedPhotos (data.photos);
+        setDescription (data.description);
+        setPerks(data.perks);
+        setExtraInfo(data.extraInfo);
+        setCheckIn(data.checkIn);
+        setCheckOut(data.checkOut);
+        setMaxGuests(data.maxGuests);
+       })
+     
+      }, [id]);
 
     function inputHeader(text){
         return (
@@ -36,8 +58,6 @@ export default function PlacesFormPage(){
             <>
             {inputHeader(header)}
             {inputDescription(description)}
-
-
             </>
         )
     }
@@ -45,7 +65,7 @@ export default function PlacesFormPage(){
 
     async function addNewPlace(event) {
         event.preventDefault(); 
-        console.log(addedPhotos);
+        // console.log(addedPhotos);
       
 
         
