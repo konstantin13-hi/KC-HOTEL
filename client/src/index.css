@@ -12,3 +12,7 @@ button.primary{
     /* background-color:#F5385D; */
     @apply bg-primary w-full p-2 text-white border rounded-2xl;
 }
+
+button{
+    @apply bg-gray-300;
+}

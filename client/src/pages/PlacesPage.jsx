@@ -11,7 +11,7 @@ export default function PlacesPage(){
     const [places, setPlaces] = useState([]);
       
     useEffect(() => {
-        axios.get('/places')
+        axios.get('/user-places')
           .then(({ data }) => {
             // console.log(data);
             setPlaces(data);
@@ -39,19 +39,23 @@ export default function PlacesPage(){
                 <div className="mt-4">
   {places.length > 0 && places.map(place => (
     <Link to={'/account/places/'+place._id} className="flex cursor-pointer bg-gray-200 p-2 rounded-2xl gap-2 mt-4" key={place._id}>
-      <div className="flex w-32 h-32 bg-gray-400 shrink-0">
+      <div className="flex w-32 h-32 bg-gray-400 shrink-0 rounded-2xl">
         {place.photos.length > 0 && (
-          <img className ="object-cover" src={'http://localhost:4000/uploads/'+place.photos[0]} alt={place.title} />
+          <img className ="object-cover rounded-2xl" src={'http://localhost:4000/uploads/'+place.photos[0]} alt={place.title} />
         )}
       </div>
       <div className="grow-0 shrink">
-      <h2 className="text-xl">{place.title}</h2>
-      <p className="text-sm mt-2">{place.description}</p>
+        <h2 className="font-bold">{place.address}</h2>
+      <h3 className="text-sm text-gray-500">{place.title}</h3>
+      <div className="mt-2">
+      <span className="font-bold">{place.price}</span>
+      </div>
+
 
       </div>
     
       
-      {place.owner}
+   
       </Link>
   ))}
 </div>

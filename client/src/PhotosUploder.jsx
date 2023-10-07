@@ -43,9 +43,7 @@ export default function PhotosUploder({addedPhotos,onChange}){
 
     function selectAsMainPhoto(ev,filename) {
       ev.preventDefault();
-    const addedPhotoWithoutSelected = [...addedPhotos.filter(photo => photo !== filename)];
-    const newAddedPhotos = [filename,...addedPhotoWithoutSelected];
-    onChange(newAddedPhotos);
+    onChange([filename,...addedPhotos.filter(photo => photo !== filename)]);
     }
 
 
