@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 import PlacesForm from "./PlacesFormPage";
 import PlacesFormPage from "./PlacesFormPage";
 import AccountNav from "./AccountNav";
+import PlaceImg from "../PlaceImg";
 export default function PlacesPage(){
     const [places, setPlaces] = useState([]);
       
@@ -40,9 +41,7 @@ export default function PlacesPage(){
   {places.length > 0 && places.map(place => (
     <Link to={'/account/places/'+place._id} className="flex cursor-pointer bg-gray-200 p-2 rounded-2xl gap-2 mt-4" key={place._id}>
       <div className="flex w-32 h-32 bg-gray-400 shrink-0 rounded-2xl">
-        {place.photos.length > 0 && (
-          <img className ="object-cover rounded-2xl" src={'http://localhost:4000/uploads/'+place.photos[0]} alt={place.title} />
-        )}
+        <PlaceImg place={place}/>
       </div>
       <div className="grow-0 shrink">
         <h2 className="font-bold">{place.address}</h2>

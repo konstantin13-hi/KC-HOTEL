@@ -7,3 +7,5 @@ yarn add jsonwebtoken  in api
 yarn add cookie-parser  in api
 yarn add image-downloader  in api
 yarn add multer            in api 
+
+yarn add date-fns in client 
