@@ -9,3 +9,4 @@ yarn add image-downloader  in api
 yarn add multer            in api 
 
 yarn add date-fns in client 
+//npx nodemon index.js 
