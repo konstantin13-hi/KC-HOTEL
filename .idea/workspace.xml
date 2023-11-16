@@ -5,15 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9032bb90-909a-4ee9-871a-def61f820521" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/entities/Booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/entities/Place.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/entities/Booking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/entities/Place.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kc/hotel/app/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/kc/hotel/app/MessageUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/resources/file.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/kc/hotel/app/MessageUtilsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/kc.hotel.java-application-conventions.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/kc.hotel.java-common-conventions.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/kc.hotel.java-library-conventions.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/main/java/kc/hotel/list/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/list/src/test/java/kc/hotel/list/LinkedListTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/src/main/java/kc/hotel/utilities/JoinUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/src/main/java/kc/hotel/utilities/SplitUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/src/main/java/kc/hotel/utilities/StringUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -37,12 +60,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="KC-HOTEL" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="KC-HOTEL" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -70,16 +87,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="show.run.dashboard.notification" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.KC-HOTEL [build]">
     <configuration name="KC-HOTEL [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -101,9 +129,59 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="KC-HOTEL [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="HotelWebSpringApp (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="KC-HOTEL.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hotelweb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hotelweb.HotelWebSpringApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HotelWebSpringApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="KC-HOTEL.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hotelweb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hotelweb.HotelWebSpringApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.KC-HOTEL [build]" />
+        <item itemvalue="Gradle.KC-HOTEL [dependencies]" />
+        <item itemvalue="Spring Boot.HotelWebSpringApp (1)" />
+        <item itemvalue="Spring Boot.HotelWebSpringApp" />
       </list>
     </recent_temporary>
   </component>
@@ -124,7 +202,14 @@
       <workItem from="1700084956501" duration="1456000" />
       <workItem from="1700089815716" duration="172000" />
       <workItem from="1700092387207" duration="676000" />
-      <workItem from="1700093254444" duration="7678000" />
+      <workItem from="1700093254444" duration="17535000" />
+      <workItem from="1700163399516" duration="1145000" />
+      <workItem from="1700165044258" duration="88000" />
+      <workItem from="1700165228903" duration="1673000" />
+      <workItem from="1700166954605" duration="1146000" />
+      <workItem from="1700168210240" duration="535000" />
+      <workItem from="1700168837113" duration="303000" />
+      <workItem from="1700171009485" duration="740000" />
     </task>
     <servers />
   </component>
