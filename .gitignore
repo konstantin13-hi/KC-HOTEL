@@ -5,3 +5,9 @@
 # Ignore Gradle build output directory
 build
 node_modules/
+
+# IntelliJ IDEA
+.idea/
+
+# Gradle
+build/
