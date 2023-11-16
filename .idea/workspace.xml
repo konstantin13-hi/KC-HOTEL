@@ -13,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="56c5dbd31211efb6dc227de3650c9b2fdae72ab1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +39,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1700175560861</updated>
-      <workItem from="1700175563055" duration="1006000" />
+      <workItem from="1700175563055" duration="1686000" />
     </task>
     <servers />
   </component>
