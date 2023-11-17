@@ -1,4 +1,4 @@
-package webapplication.config;
+package tasks.webapplication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

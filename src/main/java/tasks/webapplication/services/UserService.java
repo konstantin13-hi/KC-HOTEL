@@ -1,16 +1,11 @@
-package webapplication.services;
+package tasks.webapplication.services;
 
+import tasks.webapplication.repositories.UserRepository;
 import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import webapplication.repositories.UserRepository;
 
 import java.util.Optional;
 

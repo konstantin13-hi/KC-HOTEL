@@ -1,4 +1,4 @@
-package webapplication;
+package tasks.webapplication;
 
 public class JwtTokenProvider {
 }

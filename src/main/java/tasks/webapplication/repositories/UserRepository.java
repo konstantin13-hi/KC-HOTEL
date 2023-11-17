@@ -1,4 +1,4 @@
-package webapplication.repositories;
+package tasks.webapplication.repositories;
 
 import entities.User;
 

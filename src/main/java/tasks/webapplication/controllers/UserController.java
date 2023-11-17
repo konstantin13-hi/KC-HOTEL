@@ -1,12 +1,13 @@
-package webapplication.controllers;
+package tasks.webapplication.controllers;
 
+import entities.UserRegistrationRequest;
+import org.springframework.web.bind.annotation.*;
+import tasks.webapplication.services.UserService;
 import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import webapplication.services.UserService;
 
+@RestController
 public class UserController {
 
     private final UserService userService;
@@ -17,7 +18,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
+    public User registerUser(@RequestBody UserRegistrationRequest user) {
         return userService.registerUser(user.getName(), user.getEmail(), user.getPassword());
     }
+
+
+
+
 }
