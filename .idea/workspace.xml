@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/ImageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/PlaceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ProfilePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/PhotosUploder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PhotosUploder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/commands.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commands.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +77,19 @@
     <property name="editorconfig.notification" value="lf;" />
   </component>
   <component name="RunManager" selected="Spring Boot.MyApplication (1)">
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tasks.webapplication.controllers.main" />
+      <module name="KC-HOTEL.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tasks.webapplication.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="KC-HOTEL.main" />
       <extension name="coverage">
@@ -107,6 +126,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.MyApplication (1)" />
+        <item itemvalue="Application.main" />
         <item itemvalue="Spring Boot.MyApplication" />
       </list>
     </recent_temporary>
@@ -120,7 +140,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="22694000" />
+      <workItem from="1700253931444" duration="30557000" />
     </task>
     <servers />
   </component>
