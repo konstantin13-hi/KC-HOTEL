@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/FileUploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/PhotosUploder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PhotosUploder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +133,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="37341000" />
+      <workItem from="1700253931444" duration="41206000" />
     </task>
     <servers />
   </component>

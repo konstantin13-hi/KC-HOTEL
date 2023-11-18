@@ -68,7 +68,7 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
     if (userOptional.isPresent()) {
         User user = userOptional.get();
         if (passwordEncoder.matches(password, user.getPassword())) {
-            String token = tokenProvider.generateToken(user.getEmail());
+            String token = tokenProvider.generateToken(user.getEmail(),user.getId());
 
             Cookie cookie = new Cookie("token", token);
             cookie.setHttpOnly(true);
@@ -94,12 +94,10 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
                     return ResponseEntity.ok(userProfile);
                 }
             } catch (JwtException e) {
-                // Обработка ошибки верификации токена
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
         }
 
-        // Если токен отсутствует или произошла ошибка, возвращаем null
         return ResponseEntity.ok(null);
     }
 

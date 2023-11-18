@@ -15,9 +15,11 @@ public class JwtTokenProvider {
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     private static final long EXPIRATION_TIME = 864_000_000;
 
-    public String generateToken(String email) {
+    public String generateToken(String email, Long userId) {
+        String userIdString = String.valueOf(userId);
         return Jwts.builder()
-                .setSubject(email)
+                .claim("email", email)
+                .claim("id", userIdString)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS512)
@@ -32,6 +34,16 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody();
 
-        return claims.getSubject();
+        return claims.get("email", String.class);
+    }
+
+    public String extractIdFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(SECRET_KEY)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.get("id", String.class);
     }
 }
