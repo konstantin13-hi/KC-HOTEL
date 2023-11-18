@@ -1,5 +1,9 @@
 package tasks.webapplication.services;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import tasks.webapplication.JwtTokenProvider;
 import tasks.webapplication.repositories.UserRepository;
 import entities.User;
 
@@ -14,11 +18,13 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final JwtTokenProvider tokenProvider;
 
     @Autowired
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,JwtTokenProvider tokenProvider) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.tokenProvider = tokenProvider;
     }
 
     public User registerUser(String name, String email, String password) {
@@ -35,4 +41,26 @@ public class UserService {
         return userRepository.save(user);
 
     }
+
+    public ResponseEntity<?> loginUser(String email, String password) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (passwordEncoder.matches(password, user.getPassword())) {
+                String token = tokenProvider.generateToken(user.getEmail());
+                return ResponseEntity.ok()
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .body(user);
+            }
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body("Invalid credentials");
+    }
+
+
+
+
+
 }

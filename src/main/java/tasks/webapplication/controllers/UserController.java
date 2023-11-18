@@ -1,6 +1,8 @@
 package tasks.webapplication.controllers;
 
+import entities.UserLoginRequest;
 import entities.UserRegistrationRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tasks.webapplication.services.UserService;
 import entities.User;
@@ -20,6 +22,11 @@ public class UserController {
     @PostMapping("/register")
     public User registerUser(@RequestBody UserRegistrationRequest user) {
         return userService.registerUser(user.getName(), user.getEmail(), user.getPassword());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest) {
+        return userService.loginUser(userLoginRequest.getEmail(),userLoginRequest.getPassword());
     }
 
 
