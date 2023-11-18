@@ -43,6 +43,11 @@ public class UserController {
         return userService.getProfile(token);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<Boolean> logout(HttpServletResponse response) {
+        return ResponseEntity.ok(userService.logout(response));
+    }
+
 
 
 

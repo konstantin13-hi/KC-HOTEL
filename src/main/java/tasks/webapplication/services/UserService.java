@@ -104,6 +104,17 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
     }
 
 
+    public boolean logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge(0);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        return true;
+    }
+
+
 
 
 
