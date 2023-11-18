@@ -22,7 +22,7 @@ export default function PhotosUploder({addedPhotos,onChange}){
             }
             console.log(data);
           
-            axios.post('/upload', data, {
+            axios.post('http://localhost:8080/upload', data, {
               headers: { 'Content-Type': 'multipart/form-data' }
             })
             .then(response => {
