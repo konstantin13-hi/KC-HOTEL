@@ -1,5 +1,7 @@
 package tasks.webapplication.services;
 
+import entities.UserProfileResponse;
+import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 
@@ -42,22 +46,63 @@ public class UserService {
 
     }
 
-    public ResponseEntity<?> loginUser(String email, String password) {
-        Optional<User> userOptional = userRepository.findByEmail(email);
+//    public ResponseEntity<?> loginUser(String email, String password) {
+//        Optional<User> userOptional = userRepository.findByEmail(email);
+//
+//        if (userOptional.isPresent()) {
+//            User user = userOptional.get();
+//            if (passwordEncoder.matches(password, user.getPassword())) {
+//                String token = tokenProvider.generateToken(user.getEmail());
+//                return ResponseEntity.ok()
+//                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+//                        .body(user);
+//            }
+//        }
+//
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//                .body("Invalid credentials");
+//    }
+public ResponseEntity<?> loginUser(String email, String password, HttpServletResponse response) {
+    Optional<User> userOptional = userRepository.findByEmail(email);
 
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            if (passwordEncoder.matches(password, user.getPassword())) {
-                String token = tokenProvider.generateToken(user.getEmail());
-                return ResponseEntity.ok()
-                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                        .body(user);
+    if (userOptional.isPresent()) {
+        User user = userOptional.get();
+        if (passwordEncoder.matches(password, user.getPassword())) {
+            String token = tokenProvider.generateToken(user.getEmail());
+
+            Cookie cookie = new Cookie("token", token);
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
+
+            return ResponseEntity.ok(user);
+        }
+    }
+
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+            .body("Invalid credentials");
+}
+
+    public ResponseEntity<UserProfileResponse> getProfile(String token) {
+        if (token != null) {
+            try {
+                String email = tokenProvider.extractEmailFromToken(token);
+                Optional<User> userOptional = userRepository.findByEmail(email);
+
+                if (userOptional.isPresent()) {
+                    User user = userOptional.get();
+                    UserProfileResponse userProfile = new UserProfileResponse(user.getName(), user.getEmail(), user.getId());
+                    return ResponseEntity.ok(userProfile);
+                }
+            } catch (JwtException e) {
+                // Обработка ошибки верификации токена
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
         }
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body("Invalid credentials");
+        // Если токен отсутствует или произошла ошибка, возвращаем null
+        return ResponseEntity.ok(null);
     }
+
 
 
 

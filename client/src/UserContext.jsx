@@ -9,7 +9,7 @@ const [ready,setReady] = useState(false);
 
    useEffect(()=>{
     if(!user){
-        axios.get('/profile').then(({data})=>{
+        axios.get('http://localhost:8080/profile').then(({data})=>{
             setUser(data);
             setReady(true);
         })
