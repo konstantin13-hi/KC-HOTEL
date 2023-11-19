@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/BookingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/BookingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/BookingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/PlaceGallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PlaceGallery.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/BookingWidget.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/BookingWidget.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BookingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/BookingPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/BookingsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/BookingsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/commands.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commands.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="75424000" />
+      <workItem from="1700253931444" duration="84782000" />
     </task>
     <servers />
   </component>

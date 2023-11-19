@@ -26,10 +26,15 @@ export default function BookingWidget({place}){
   }
 
   async function bookThisPlace (){
-    const response =await axios.post('/bookings', 
-    {checkIn,checkOut,numberOfGuests,name,phone,
-        place:place._id,price : numberOfDays * place.price});
-        const bookingId = response.data._id;
+    const response =await axios.post('http://localhost:8080/bookings',
+    {checkIn,
+       checkOut,
+       numberOfGuests,
+       name,
+       phone,
+       placeId: place.id,
+       price: numberOfDays * place.price});
+        const bookingId = response.data.id;
         setRedirect(`/account/bookings/${bookingId}`)
    
   }

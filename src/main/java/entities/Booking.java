@@ -1,91 +1,133 @@
 package entities;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "bookings")
 public class Booking {
-    private int id;
-    private int placeId;
-    private int userId;
-    private Timestamp checkIn;
-    private Timestamp checkOut;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "place_id", nullable = false)
+    private Place place;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "check_in", nullable = false)
+    private Date checkIn;
+
+    @Column(name = "check_out", nullable = false)
+    private Date checkOut;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String phone;
-    private BigDecimal price;
+
+    private Double price;
+
+    @Column(nullable = false)
+    private Integer number_of_guests;
 
 
-    public Booking(int id, int placeId, int userId, Timestamp checkIn, Timestamp checkOut, String name, String phone, BigDecimal price) {
+
+
+
+    public Booking() {
+
+    }
+
+    public Booking(Long id, Place place, User user, Date checkIn, Date checkOut, String name, String phone, Double price, Integer number_of_guests) {
         this.id = id;
-        this.placeId = placeId;
-        this.userId = userId;
+        this.place = place;
+        this.user = user;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.name = name;
         this.phone = phone;
         this.price = price;
+        this.number_of_guests = number_of_guests;
     }
 
-    public int getId() {
+    public Integer getNumber_of_guests() {
+        return number_of_guests;
+    }
+
+    public void setNumberOfGuests(Integer number_of_guests) {
+        this.number_of_guests = number_of_guests;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Place getPlace() {
+        return place;
     }
 
-    public int getPlaceId() {
-        return placeId;
+    public User getUser() {
+        return user;
     }
 
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Timestamp getCheckIn() {
+    public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Timestamp checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public Timestamp getCheckOut() {
+    public Date getCheckOut() {
         return checkOut;
-    }
-
-    public void setCheckOut(Timestamp checkOut) {
-        this.checkOut = checkOut;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPhone() {
         return phone;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(Date checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -94,20 +136,20 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id && placeId == booking.placeId && userId == booking.userId && Objects.equals(checkIn, booking.checkIn) && Objects.equals(checkOut, booking.checkOut) && Objects.equals(name, booking.name) && Objects.equals(phone, booking.phone) && Objects.equals(price, booking.price);
+        return Objects.equals(id, booking.id) && Objects.equals(place, booking.place) && Objects.equals(user, booking.user) && Objects.equals(checkIn, booking.checkIn) && Objects.equals(checkOut, booking.checkOut) && Objects.equals(name, booking.name) && Objects.equals(phone, booking.phone) && Objects.equals(price, booking.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, placeId, userId, checkIn, checkOut, name, phone, price);
+        return Objects.hash(id, place, user, checkIn, checkOut, name, phone, price);
     }
 
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
-                ", placeId=" + placeId +
-                ", userId=" + userId +
+                ", place=" + place +
+                ", user=" + user +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
                 ", name='" + name + '\'' +

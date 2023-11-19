@@ -24,3 +24,17 @@ CREATE TABLE Places (
                         price NUMERIC
 );
 
+
+CREATE TABLE Bookings (
+                          id SERIAL PRIMARY KEY,
+                          place_id INTEGER REFERENCES places(id) NOT NULL,
+                          user_id INTEGER REFERENCES users(id) NOT NULL,
+                          check_in DATE NOT NULL,
+                          check_out DATE NOT NULL,
+                          name VARCHAR(255) NOT NULL,
+                          phone VARCHAR(255) NOT NULL,
+                          price NUMERIC,
+                          number_of_guests INTEGER NOT NULL,
+                          CONSTRAINT valid_dates CHECK (check_in < check_out)
+);
+

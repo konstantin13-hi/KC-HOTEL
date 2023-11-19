@@ -11,7 +11,7 @@ import BookingDates from "../BookingDates";
 export default function BookingsPage(){
     const [booking,setBookings] = useState([]);
      useEffect(()=>{
-        axios.get('/bookings').then(response =>{
+        axios.get('http://localhost:8080/bookings').then(response =>{
             setBookings(response.data)
 
         })
@@ -24,7 +24,7 @@ export default function BookingsPage(){
             <div>
                 {booking?.length >0 && booking.map(booking =>(
                     // eslint-disable-next-line react/jsx-key
-                    <Link to={`/account/bookings/${booking._id}`} className="cursor-pointer flex gap-4 bg-gray-200 rounded-2xl overflow-hidden">
+                    <Link key={booking.id}  to={`/account/bookings/${booking.id}`} className="cursor-pointer flex gap-4 bg-gray-200 rounded-2xl overflow-hidden">
                         <div className="w-48">
                             <PlaceImg place={booking.place}/>
                         </div>
