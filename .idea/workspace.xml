@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PlaceCreateRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PlaceRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/UserPlacesResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/PlaceImg.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PlaceImg.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/PlacesFormPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacesFormPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacesPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Place.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/PlaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/PlaceRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo1ec7d2f3-de16-4de3-9856-394338db836a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo42473a46-38d5-48a8-a593-4f4c11b05076.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo45f02386-e4dc-4937-b172-30a791f8340c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo4aab3dba-6e9c-416c-bf3a-1ece35eb9c9f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo54220892-8718-49ab-8c97-1cb6eddf82a7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photo637a4065-daba-4078-a107-f1b4d82fc3bd.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photoa1ef2ac4-a67f-4781-8e12-838c88cea263.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photoa5936a85-620d-48a8-a17d-edca6148e8aa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photoaea92e2b-4cd7-4311-a279-7fec7a43e15e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/photoef7f4b6d-f924-4d3f-91b5-783c3148a92b.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="63696000" />
+      <workItem from="1700253931444" duration="65971000" />
     </task>
     <servers />
   </component>

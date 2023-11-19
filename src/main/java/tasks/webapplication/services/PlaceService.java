@@ -10,6 +10,7 @@ import tasks.webapplication.JwtTokenProvider;
 import tasks.webapplication.repositories.PlaceRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -82,5 +83,16 @@ public class PlaceService {
                         place.getPrice()
                 ))
                 .collect(Collectors.toList());
+    }
+
+
+
+    public ResponseEntity<Place> getPlaceById(Long id) {
+        Optional<Place> place = placeRepository.findById(id);
+//        System.out.println(id);
+//        place.ifPresent(value -> System.out.println(value.toString()));
+        return place.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+
     }
 }

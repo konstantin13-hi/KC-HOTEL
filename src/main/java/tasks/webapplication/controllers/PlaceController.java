@@ -40,6 +40,12 @@ public class PlaceController {
     public ResponseEntity<List<UserPlacesResponse>> getUserPlaces(@CookieValue(name = "token") String token) {
         return placeService.getUserPlaces(token);
     }
+
+
+    @GetMapping("/places/{id}")
+    public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
+       return placeService.getPlaceById(id);
+    }
 }
 
 
