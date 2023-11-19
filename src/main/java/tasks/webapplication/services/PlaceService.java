@@ -131,4 +131,11 @@ public class PlaceService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating place");
         }
     }
+
+
+    public ResponseEntity<List<Place>> getAllPlaces() {
+        List<Place> places = placeRepository.findAll();
+        return ResponseEntity.ok(places);
+    }
+
 }

@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacesFormPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacesFormPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PlaceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/PlaceRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/PlaceGallery.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PlaceGallery.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/IndexPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" afterDir="false" />
     </list>
@@ -137,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="73518000" />
+      <workItem from="1700253931444" duration="75424000" />
     </task>
     <servers />
   </component>

@@ -37,7 +37,7 @@ export default function PlacePage(){
         {place?.photos?.length > 0 &&
           place.photos.map((photo, index) => (
             <div key={index}>
-              <img   style={{ width: '100%', objectFit: 'cover' }} src={'http://localhost:4000/uploads/' + photo} alt="" />
+              <img   style={{ width: '100%', objectFit: 'cover' }} src={'http://localhost:8080/uploads/' + photo} alt="" />
             </div>
           ))}
           </div>

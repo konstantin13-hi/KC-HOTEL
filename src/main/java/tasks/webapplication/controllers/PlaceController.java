@@ -52,6 +52,12 @@ public class PlaceController {
     }
 
 
+    @GetMapping("/places")
+    public ResponseEntity<List<Place>> getAllPlaces() {
+       return placeService.getAllPlaces();
+    }
+
+
 }
 
 

@@ -8,7 +8,7 @@ export default function IndexPage(){
 
    const [places,setPlaces] = useState();
    useEffect(()=>{
-    axios.get('/places').then(response=>{
+    axios.get('http://localhost:8080/places').then(response=>{
       setPlaces(response.data);
       console.log(response.data)
     })
@@ -20,10 +20,10 @@ console.log(places);
         <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {places?.length > 0 && places.map(place => (
       
-          <Link to={'/place/'+place._id} key={place._id}>
+          <Link to={'/place/'+place.id} key={place.id}>
             <div className="bg-gray-500 flex rounded-2xl">
             {place.photos?.[0] && (
-              <img className="rounded-2xl aspect-square" src={`http://localhost:4000/uploads/${place.photos?.[0]}`} alt="" />
+              <img className="rounded-2xl aspect-square" src={`http://localhost:8080/uploads/${place.photos?.[0]}`} alt="" />
             )}
              </div>
              <h2 className="text-sm truncate leading-4">{place.title}</h2>
