@@ -81,7 +81,7 @@ export default function PlacesFormPage(){
        console.log(data);
         setRedirect ('/account/places');
         } else {
-         await axios.post('/places', placeData);
+         await axios.post('http://localhost:8080/places', placeData);
         setRedirect (true);
         }
     }

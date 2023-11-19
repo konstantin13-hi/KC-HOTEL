@@ -1,134 +1,152 @@
 package entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Places")
 public class Place {
-    private int id;
-    private int ownerId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User ownerId;
+
     private String title;
     private String address;
+
+    @ElementCollection
     private List<String> photos;
+
     private String description;
+
+    @ElementCollection
     private List<String> perks;
+
+    @Column(name = "extra_info")
     private String extraInfo;
-    private int checkIn;
-    private int checkOut;
-    private int maxGuests;
-    private BigDecimal price;
 
-    public Place(int id, int ownerId, String title, String address, List<String> photos,
-                 String description, List<String> perks, String extraInfo,
-                 int checkIn, int checkOut, int maxGuests, BigDecimal price) {
-        this.id = id;
-        this.ownerId = ownerId;
-        this.title = title;
-        this.address = address;
-        this.photos = photos;
-        this.description = description;
-        this.perks = perks;
-        this.extraInfo = extraInfo;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-        this.maxGuests = maxGuests;
-        this.price = price;
-    }
+    @Column(name = "check_in")
+    private Integer checkIn;
 
-    public int getId() {
+    @Column(name = "check_out")
+    private Integer checkOut;
+
+    @Column(name = "max_guests")
+    private Integer maxGuests;
+
+    private Double price;
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getOwnerId() {
+    public User getOwnerId() {
         return ownerId;
-    }
-
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public List<String> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<String> photos) {
-        this.photos = photos;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<String> getPerks() {
         return perks;
     }
 
-    public void setPerks(List<String> perks) {
-        this.perks = perks;
-    }
-
     public String getExtraInfo() {
         return extraInfo;
+    }
+
+    public Integer getCheckIn() {
+        return checkIn;
+    }
+
+    public Integer getCheckOut() {
+        return checkOut;
+    }
+
+    public Integer getMaxGuests() {
+        return maxGuests;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setOwnerId(User ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPerks(List<String> perks) {
+        this.perks = perks;
     }
 
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
     }
 
-    public int getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(int checkIn) {
+    public void setCheckIn(Integer checkIn) {
         this.checkIn = checkIn;
     }
 
-    public int getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(int checkOut) {
+    public void setCheckOut(Integer checkOut) {
         this.checkOut = checkOut;
     }
 
-    public int getMaxGuests() {
-        return maxGuests;
-    }
-
-    public void setMaxGuests(int maxGuests) {
+    public void setMaxGuests(Integer maxGuests) {
         this.maxGuests = maxGuests;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+
+    public void copyPerks(List<String> source) {
+        perks = new ArrayList<>(source);
+    }
+
+    public void copyPhotos(List<String> source) {
+        photos = new ArrayList<>(source);
     }
 
     @Override
@@ -160,6 +178,9 @@ public class Place {
     @Override
     public int hashCode() {
         return Objects.hash(id, ownerId, title, address, photos, description, perks, extraInfo, checkIn, checkOut, maxGuests, price);
+    }
+
+    public Place() {
     }
 }
 

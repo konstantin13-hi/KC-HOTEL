@@ -12,9 +12,9 @@ export default function PlacesPage(){
     const [places, setPlaces] = useState([]);
       
     useEffect(() => {
-        axios.get('/user-places')
+        axios.get('http://localhost:8080/user-places')
           .then(({ data }) => {
-            // console.log(data);
+            console.log(data);
             setPlaces(data);
           })
           .catch(error => {
@@ -26,9 +26,9 @@ export default function PlacesPage(){
     return (
         <div className="p-8">
             <AccountNav/>
- 
+
                 <div className="text-center">
-                
+
                 <Link className="inline-flex bg-primary text-white py-2 px-4 rounded-full" to={'/account/places/new'}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -39,7 +39,7 @@ export default function PlacesPage(){
 
                 <div className="mt-4">
   {places.length > 0 && places.map(place => (
-    <Link to={'/account/places/'+place._id} className="flex cursor-pointer bg-gray-200 p-2 rounded-2xl gap-2 mt-4" key={place._id}>
+    <Link to={'/account/places/'+place.id} className="flex cursor-pointer bg-gray-200 p-2 rounded-2xl gap-2 mt-4" key={place.id}>
       <div className="flex w-32 h-32 bg-gray-400 shrink-0 rounded-2xl">
         <PlaceImg place={place}/>
       </div>
@@ -52,9 +52,9 @@ export default function PlacesPage(){
 
 
       </div>
-    
-      
-   
+
+
+
       </Link>
   ))}
 </div>

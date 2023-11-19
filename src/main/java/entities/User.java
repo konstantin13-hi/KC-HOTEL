@@ -22,9 +22,9 @@ public class User {
 
     }
 
-
-
-
+    public User(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
