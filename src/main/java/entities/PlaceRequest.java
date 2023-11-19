@@ -1,10 +1,13 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class PlaceRequest {
     private String title;
     private String address;
+    @JsonProperty("addedPhotos")
     private List<String> addedPhotos;
     private String description;
     private List<String> perks;
@@ -52,5 +55,22 @@ public class PlaceRequest {
 
     public Double getPrice() {
         return price;
+    }
+
+
+    @Override
+    public String toString() {
+        return "PlaceRequest{" +
+                "title='" + title + '\'' +
+                ", address='" + address + '\'' +
+                ", addedPhotos=" + addedPhotos +
+                ", description='" + description + '\'' +
+                ", perks=" + perks +
+                ", extraInfo='" + extraInfo + '\'' +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", maxGuests=" + maxGuests +
+                ", price=" + price +
+                '}';
     }
 }

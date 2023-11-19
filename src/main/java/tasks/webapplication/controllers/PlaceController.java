@@ -1,9 +1,6 @@
 package tasks.webapplication.controllers;
 
-import entities.Place;
-import entities.PlaceCreateRequest;
-import entities.User;
-import entities.UserPlacesResponse;
+import entities.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +43,15 @@ public class PlaceController {
     public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
        return placeService.getPlaceById(id);
     }
+
+
+    @PutMapping("/places/{id}")
+    public ResponseEntity<String> updatePlace(@PathVariable Long id, @RequestBody PlaceRequest placeRequest, @CookieValue(name = "token") String token) {
+        System.out.println(placeRequest.toString());
+        return placeService.updatePlace(id,placeRequest,token);
+    }
+
+
 }
 
 

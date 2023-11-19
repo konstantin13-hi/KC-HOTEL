@@ -77,7 +77,8 @@ export default function PlacesFormPage(){
           checkOut, maxGuests,price,
         };
         if (id) {
-     const {data}  =  await axios.put('/places', {id, ...placeData});
+//      const {data}  =  await axios.put('/places', {id, ...placeData});
+     const { data } = await axios.put(`http://localhost:8080/places/${id}`, {...placeData});
        console.log(data);
         setRedirect ('/account/places');
         } else {

@@ -95,4 +95,40 @@ public class PlaceService {
                 .orElseGet(() -> ResponseEntity.notFound().build());
 
     }
+
+
+    public ResponseEntity<String> updatePlace(Long id, PlaceRequest placeRequest, String token) {
+        try {
+            Long ownerId = Long.parseLong(jwtService.extractIdFromToken(token));
+            Optional<Place> optionalPlace = placeRepository.findById(id);
+
+            if (optionalPlace.isPresent()) {
+                Place place = optionalPlace.get();
+
+
+                if (place.getOwnerId().getId().equals(ownerId)) {
+                    place.setTitle(placeRequest.getTitle());
+                    place.setAddress(placeRequest.getAddress());
+                    place.setPhotos(placeRequest.getPhotos());
+                    place.setDescription(placeRequest.getDescription());
+                    place.setPerks(placeRequest.getPerks());
+                    place.setExtraInfo(placeRequest.getExtraInfo());
+                    place.setCheckIn(placeRequest.getCheckIn());
+                    place.setCheckOut(placeRequest.getCheckOut());
+                    place.setMaxGuests(placeRequest.getMaxGuests());
+                    place.setPrice(placeRequest.getPrice());
+                    placeRepository.save(place);
+
+                    return ResponseEntity.ok("Place updated successfully");
+                } else {
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You don't have permission to update this place");
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Place not found");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating place");
+        }
+    }
 }
