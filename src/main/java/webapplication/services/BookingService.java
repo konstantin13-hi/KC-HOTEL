@@ -1,13 +1,13 @@
-package tasks.webapplication.services;
+package webapplication.services;
 
 import entities.Booking;
-import entities.BookingRequest;
+import dto.BookingRequest;
 import entities.Place;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tasks.webapplication.JwtTokenProvider;
-import tasks.webapplication.repositories.BookingRepository;
+import webapplication.JwtTokenProvider;
+import webapplication.repositories.BookingRepository;
 
 import java.util.List;
 

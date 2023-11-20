@@ -1,4 +1,4 @@
-package entities;
+package dto;
 
 public class UserProfileResponse {
 

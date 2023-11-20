@@ -1,4 +1,4 @@
-package tasks.webapplication.controllers;
+package webapplication.controllers;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.PostMapping;

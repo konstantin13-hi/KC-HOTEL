@@ -1,12 +1,11 @@
-package tasks.webapplication.controllers;
+package webapplication.controllers;
 
-import entities.UserLoginRequest;
-import entities.UserProfileResponse;
-import entities.UserRegistrationRequest;
-import org.springframework.http.HttpHeaders;
+import dto.UserLoginRequest;
+import dto.UserProfileResponse;
+import dto.UserRegistrationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tasks.webapplication.services.UserService;
+import webapplication.services.UserService;
 import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;

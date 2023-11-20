@@ -1,13 +1,16 @@
-package tasks.webapplication.services;
+package webapplication.services;
 
+import dto.PlaceCreateRequest;
+import dto.PlaceRequest;
+import dto.UserPlacesResponse;
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
-import tasks.webapplication.JwtTokenProvider;
-import tasks.webapplication.repositories.PlaceRepository;
+import webapplication.JwtTokenProvider;
+import webapplication.repositories.PlaceRepository;
 
 import java.util.List;
 import java.util.Optional;

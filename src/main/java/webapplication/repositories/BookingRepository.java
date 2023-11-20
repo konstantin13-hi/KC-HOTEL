@@ -1,4 +1,4 @@
-package tasks.webapplication.repositories;
+package webapplication.repositories;
 
 import entities.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;

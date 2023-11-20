@@ -1,12 +1,12 @@
-package tasks.webapplication.controllers;
+package webapplication.controllers;
 
 import entities.Booking;
-import entities.BookingRequest;
+import dto.BookingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tasks.webapplication.services.BookingService;
+import webapplication.services.BookingService;
 
 import java.util.List;
 

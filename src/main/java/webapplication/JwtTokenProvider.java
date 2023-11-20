@@ -1,4 +1,4 @@
-package tasks.webapplication;
+package webapplication;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

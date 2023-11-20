@@ -1,12 +1,11 @@
-package tasks.webapplication.services;
+package webapplication.services;
 
-import entities.UserProfileResponse;
+import dto.UserProfileResponse;
 import io.jsonwebtoken.JwtException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import tasks.webapplication.JwtTokenProvider;
-import tasks.webapplication.repositories.UserRepository;
+import webapplication.JwtTokenProvider;
+import webapplication.repositories.UserRepository;
 import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;

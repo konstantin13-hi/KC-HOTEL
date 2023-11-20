@@ -1,15 +1,15 @@
-package tasks.webapplication.controllers;
+package webapplication.controllers;
 
+import dto.PlaceCreateRequest;
+import dto.PlaceRequest;
+import dto.UserPlacesResponse;
 import entities.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import tasks.webapplication.JwtTokenProvider;
-import tasks.webapplication.repositories.PlaceRepository;
-import tasks.webapplication.services.PlaceService;
+import webapplication.services.PlaceService;
 
 import java.util.List;
 
