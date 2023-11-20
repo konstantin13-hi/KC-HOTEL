@@ -93,7 +93,7 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
                     return ResponseEntity.ok(userProfile);
                 }
             } catch (JwtException e) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+                return ResponseEntity.ok(null);
             }
         }
 

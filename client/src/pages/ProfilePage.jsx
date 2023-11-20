@@ -19,7 +19,7 @@ export default function ProfilePage(){
 
  async function logOut(){
    await axios.post('http://localhost:8080/logout');
-    setRedirect('/');
+     setRedirect(true);
    setUser(null);
   }
 
@@ -27,9 +27,9 @@ export default function ProfilePage(){
       return <Navigate to={'/login'} />
     }
 
-    if (redirect) {
-      return <Navigate to={redirect} />
-    }
+    if (redirect){
+       return <Navigate path={'/'} />
+     }
 
      if(!ready){
         return "Loading";
@@ -42,7 +42,7 @@ export default function ProfilePage(){
                  {subpage === 'profile' && (
                    <div className="text-center max-w-lg mx-auto">
                      Logged in as {user.name} ({user.email})<br />
-                     <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
+                     <button onClick={logOut} className="primary max-w-sm mt-2">Logout</button>
                    </div>
                  )}
                  {subpage === 'places' && (
