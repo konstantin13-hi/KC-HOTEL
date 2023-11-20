@@ -1,4 +1,4 @@
-import { useState } from 'react'
+    import { useState } from 'react'
 
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
@@ -16,7 +16,7 @@ import PlacePage from './pages/PlacePage'
 import BookingsPage from './pages/BookingsPage'
 import BookingPage from './pages/BookingPage'
 
-axios.defaults.baseURL ='http://localhost:4000'
+axios.defaults.baseURL ='http://localhost:8080'
 axios.defaults.withCredentials =true;
 
 function App() {

@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d05e7d8-b500-423b-995d-18d9979dffba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/Image.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/PlaceImg.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/PlaceImg.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/PlacesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/PlacesPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/BookingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/BookingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PlaceCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/PlaceCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PlaceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/PlaceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/UserLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserLoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/UserPlacesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserPlacesResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/UserProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserProfileResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/UserRegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/UserRegistrationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/MyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/configs/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/configs/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/FileUploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/PlaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/controllers/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/controllers/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/repositories/BookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/PlaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/repositories/PlaceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/services/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/services/PlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasks/webapplication/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/webapplication/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ProfilePage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700249461455</updated>
       <workItem from="1700249463716" duration="3293000" />
-      <workItem from="1700253931444" duration="88698000" />
+      <workItem from="1700253931444" duration="91253000" />
     </task>
     <servers />
   </component>

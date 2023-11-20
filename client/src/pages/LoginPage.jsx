@@ -16,9 +16,9 @@ export default function LoginPage(){
         try{
             //////??????????? data
         const {data} = await axios.post('http://localhost:8080/login',{email,password});
-            alert('Login succesful');
-            setUser(data);
-            setRedirect(true);
+                 setUser(data);
+                alert('Login successful');
+                setRedirect(true);
         }
         catch(e){
             alert('Login failed')

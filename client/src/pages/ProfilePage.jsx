@@ -14,48 +14,41 @@ export default function ProfilePage(){
    
     subpage = 'profile';
   }
-  console.log(subpage)
-
-  if(!ready){
-    return "Loading";
-  }
-
-  if(!user && ready && !redirect){
-    return <Navigate to={'/login'}/>
-  }
+  console.log(subpage);
 
 
  async function logOut(){
    await axios.post('http://localhost:8080/logout');
+    setRedirect('/');
    setUser(null);
-   setRedirect(true);
   }
 
-  if (redirect){
-    return <Navigate path={'/'} />
-  }
+   if (ready && !user && !redirect) {
+      return <Navigate to={'/login'} />
+    }
+
+    if (redirect) {
+      return <Navigate to={redirect} />
+    }
+
+     if(!ready){
+        return "Loading";
+      }
 
 
     return (
-      <div>
-      <AccountNav/>
-       {subpage === 'profile' && 
-         ( <div className="text-center max-w-lg mx-auto">
-            Logged in as {user.name} ({user.email}) <br/>
-            <button onClick={logOut} className="primary max-w-sm mt-2">Logout</button>
-        </div>)}
-
-        <div>
-          {subpage === 'places' &&(
-
-            <PlacesPage/>
-            
-          )}
-        </div>
-       
-       
-      </div>
-
-    )
+               <div>
+                 <AccountNav />
+                 {subpage === 'profile' && (
+                   <div className="text-center max-w-lg mx-auto">
+                     Logged in as {user.name} ({user.email})<br />
+                     <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
+                   </div>
+                 )}
+                 {subpage === 'places' && (
+                   <PlacesPage />
+                 )}
+               </div>
+             );
 
 }
