@@ -23,14 +23,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User registerUser(@RequestBody UserRegistrationRequest user) {
-        return userService.registerUser(user.getName(), user.getEmail(), user.getPassword());
+    public void registerUser(@RequestBody UserRegistrationRequest user) {
+         userService.registerUser(user);
     }
-
-//    @PostMapping("/login")
-//    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest) {
-//        return userService.loginUser(userLoginRequest.getEmail(),userLoginRequest.getPassword());
-//    }
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest, HttpServletResponse response) {
@@ -46,6 +41,7 @@ public class UserController {
     public ResponseEntity<Boolean> logout(HttpServletResponse response) {
         return ResponseEntity.ok(userService.logout(response));
     }
+
 
 
 

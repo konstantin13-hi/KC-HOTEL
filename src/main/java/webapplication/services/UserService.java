@@ -1,6 +1,7 @@
 package webapplication.services;
 
 import dto.UserProfileResponse;
+import dto.UserRegistrationRequest;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,37 +31,19 @@ public class UserService {
         this.tokenProvider = tokenProvider;
     }
 
-    public User registerUser(String name, String email, String password) {
-        Optional<User> existingUser = userRepository.findByEmail(email);
+    public void registerUser(UserRegistrationRequest userRegistrationRequest) {
+        Optional<User> existingUser = userRepository.findByEmail(userRegistrationRequest.getEmail());
         if (existingUser.isPresent()) {
             throw new RuntimeException("User with this email already exists");
         }
-
         User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
-
-        return userRepository.save(user);
-
+        user.setName(userRegistrationRequest.getName());
+        user.setEmail(userRegistrationRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(userRegistrationRequest.getPassword()));
+        userRepository.save(user);
     }
 
-//    public ResponseEntity<?> loginUser(String email, String password) {
-//        Optional<User> userOptional = userRepository.findByEmail(email);
-//
-//        if (userOptional.isPresent()) {
-//            User user = userOptional.get();
-//            if (passwordEncoder.matches(password, user.getPassword())) {
-//                String token = tokenProvider.generateToken(user.getEmail());
-//                return ResponseEntity.ok()
-//                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-//                        .body(user);
-//            }
-//        }
-//
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-//                .body("Invalid credentials");
-//    }
+
 public ResponseEntity<?> loginUser(String email, String password, HttpServletResponse response) {
     Optional<User> userOptional = userRepository.findByEmail(email);
 

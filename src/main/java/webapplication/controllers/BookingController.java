@@ -37,4 +37,6 @@ public class BookingController {
         List<Booking> userBookings = bookingService.getUserBookings(token);
         return ResponseEntity.ok(userBookings);
     }
+
+
 }
