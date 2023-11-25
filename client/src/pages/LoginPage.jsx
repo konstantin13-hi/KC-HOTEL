@@ -7,6 +7,7 @@ export default function LoginPage(){
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
     const[redirect,setRedirect] = useState(false);
+          const [errors, setErrors] = useState({});
     const{setUser} =  useContext(UserContext);
 
     
@@ -21,7 +22,14 @@ export default function LoginPage(){
                 setRedirect(true);
         }
         catch(e){
-            alert('Login failed')
+        console.log(e);
+                  if (e.response && e.response.status === 400 && e.response.data) {
+                    const errorData = e.response.data;
+                    setErrors(errorData);
+                  }else{
+                     alert('Login failed')
+                  }
+
         }
 
     }
@@ -38,13 +46,21 @@ export default function LoginPage(){
     <input 
     type="email" 
     value={email}
-    onChange={event=>setEmail(event.target.value)}
+    onChange={(event) => {
+                      setEmail(event.target.value);
+                      setErrors({ ...errors, email: undefined });
+                    }}
     
     placeholder="your@mail.com"/>
+     {errors.email && <div className="error-message">{errors.email}</div>}
     <input type="text" 
         value={password}
-        onChange={event=>setPassword(event.target.value)}
+          onChange={(event) => {
+                          setPassword(event.target.value);
+                          setErrors({ ...errors, password: undefined });
+                        }}
     placeholder="password"/>
+    {errors.password && <div className="error-message">{errors.password}</div>}
     <button className="primary">Login</button>
 </form>
      <div className="p-2 text-center">

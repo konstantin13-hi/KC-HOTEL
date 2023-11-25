@@ -4,6 +4,7 @@ import dto.UserLoginRequest;
 import dto.UserProfileResponse;
 import dto.UserRegistrationRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import webapplication.services.UserService;
 import entities.User;
@@ -11,6 +12,7 @@ import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 public class UserController {
@@ -23,12 +25,12 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody UserRegistrationRequest user) {
+    public void registerUser(@Valid @RequestBody UserRegistrationRequest user) {
          userService.registerUser(user);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody UserLoginRequest userLoginRequest, HttpServletResponse response) {
+    public ResponseEntity<?> loginUser(@Valid @RequestBody UserLoginRequest userLoginRequest, HttpServletResponse response) {
         return userService.loginUser(userLoginRequest.getEmail(), userLoginRequest.getPassword(), response);
     }
 

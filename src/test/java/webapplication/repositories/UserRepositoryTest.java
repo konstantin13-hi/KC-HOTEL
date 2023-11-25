@@ -5,13 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import entities.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import webapplication.controllers.UserController;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
+@AutoConfigureTestDatabase
 public class UserRepositoryTest {
 
     @Autowired
