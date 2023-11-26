@@ -5,7 +5,13 @@ import dto.UserRegistrationRequest;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import webapplication.JwtTokenProvider;
+import webapplication.configs.UserRole;
 import webapplication.repositories.UserRepository;
 import entities.User;
 
@@ -15,11 +21,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
 import java.util.Optional;
 
 
 @Service
-public class UserService {
+public class UserService   {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
@@ -40,6 +47,7 @@ public class UserService {
         user.setName(userRegistrationRequest.getName());
         user.setEmail(userRegistrationRequest.getEmail());
         user.setPassword(passwordEncoder.encode(userRegistrationRequest.getPassword()));
+        user.setRoles(Collections.singleton(UserRole.ROLE_USER));
         userRepository.save(user);
     }
 
@@ -93,9 +101,6 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
 
         return true;
     }
-
-
-
 
 
 

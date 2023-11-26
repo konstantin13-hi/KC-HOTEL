@@ -3,6 +3,7 @@ package webapplication.controllers;
 import dto.UserLoginRequest;
 import dto.UserProfileResponse;
 import dto.UserRegistrationRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +26,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void registerUser(@Valid @RequestBody UserRegistrationRequest user) {
-         userService.registerUser(user);
+    public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationRequest user) {
+        try {
+            userService.registerUser(user);
+            return ResponseEntity.ok("Registration successful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed: " + e.getMessage());
+        }
     }
 
     @PostMapping("/login")

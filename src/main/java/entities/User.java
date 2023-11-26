@@ -1,11 +1,18 @@
 package entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import webapplication.configs.UserRole;
+
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,10 +23,22 @@ public class User {
     private String password;
 
 
-
+    @ElementCollection(targetClass = UserRole.class)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<UserRole> roles;
 
     public User() {
+        this.roles = new HashSet<>();
+    }
 
+    public Set<UserRole> getRoles() {
+
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 
     public User(Long id) {
@@ -42,9 +61,13 @@ public class User {
         this.email = email;
     }
 
+
+
     public String getPassword() {
         return password;
     }
+
+
 
     public void setPassword(String password) {
         this.password = password;
