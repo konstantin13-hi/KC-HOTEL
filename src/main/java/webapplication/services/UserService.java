@@ -1,7 +1,9 @@
 package webapplication.services;
 
-import dto.UserProfileResponse;
-import dto.UserRegistrationRequest;
+import webapplication.dto.UserLoginRequest;
+import webapplication.dto.UserProfileResponse;
+import webapplication.dto.UserRegistrationRequest;
+import webapplication.dto.UserResponse;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,24 +46,27 @@ public class UserService {
     }
 
 
-public ResponseEntity<?> loginUser(String email, String password, HttpServletResponse response) {
-    Optional<User> userOptional = userRepository.findByEmail(email);
+public ResponseEntity<UserResponse> loginUser(UserLoginRequest userLoginRequest,HttpServletResponse response) {
+
+    Optional<User> userOptional = userRepository.findByEmail(userLoginRequest.getEmail());
 
     if (userOptional.isPresent()) {
         User user = userOptional.get();
-        if (passwordEncoder.matches(password, user.getPassword())) {
+        if (passwordEncoder.matches(userLoginRequest.getPassword(), user.getPassword())) {
             String token = tokenProvider.generateToken(user.getEmail(),user.getId());
 
             Cookie cookie = new Cookie("token", token);
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
-
-            return ResponseEntity.ok(user);
+            UserResponse userResponse = new UserResponse();
+            userResponse.setName(user.getName());
+            userResponse.setEmail(user.getEmail());
+            return ResponseEntity.ok(userResponse);
         }
     }
 
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-            .body("Invalid credentials");
+            .body(null);
 }
 
     public ResponseEntity<UserProfileResponse> getProfile(String token) {
@@ -72,7 +77,7 @@ public ResponseEntity<?> loginUser(String email, String password, HttpServletRes
 
                 if (userOptional.isPresent()) {
                     User user = userOptional.get();
-                    UserProfileResponse userProfile = new UserProfileResponse(user.getName(), user.getEmail(), user.getId());
+                    UserProfileResponse userProfile = new UserProfileResponse(user.getName(), user.getEmail());
                     return ResponseEntity.ok(userProfile);
                 }
             } catch (JwtException e) {

@@ -1,13 +1,12 @@
 package webapplication.controllers;
 
-import dto.UserLoginRequest;
-import dto.UserProfileResponse;
-import dto.UserRegistrationRequest;
+import webapplication.dto.UserLoginRequest;
+import webapplication.dto.UserProfileResponse;
+import webapplication.dto.UserRegistrationRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import webapplication.dto.UserResponse;
 import webapplication.services.UserService;
-import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,8 +29,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@Valid @RequestBody UserLoginRequest userLoginRequest, HttpServletResponse response) {
-        return userService.loginUser(userLoginRequest.getEmail(), userLoginRequest.getPassword(), response);
+    public ResponseEntity<UserResponse> loginUser(@Valid @RequestBody UserLoginRequest userLoginRequest, HttpServletResponse response) {
+        return userService.loginUser(userLoginRequest,response);
     }
 
     @GetMapping("/profile")

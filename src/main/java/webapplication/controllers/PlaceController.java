@@ -1,8 +1,8 @@
 package webapplication.controllers;
 
-import dto.PlaceCreateRequest;
-import dto.PlaceRequest;
-import dto.UserPlacesResponse;
+import webapplication.dto.PlaceCreateRequest;
+import webapplication.dto.PlaceRequest;
+import webapplication.dto.UserPlacesResponse;
 import entities.*;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,7 @@
 package webapplication.services;
 
 import entities.Booking;
-import dto.BookingRequest;
+import webapplication.dto.BookingRequest;
 import entities.Place;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;

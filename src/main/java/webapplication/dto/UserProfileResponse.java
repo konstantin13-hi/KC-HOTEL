@@ -1,16 +1,17 @@
-package dto;
+package webapplication.dto;
 
 public class UserProfileResponse {
 
     private  String name;
     private  String email;
-    private  Long id;
 
-    public UserProfileResponse(String name, String email, Long id) {
-        this.id=id;
-        this.email=email;
+
+    public UserProfileResponse(String name, String email) {
         this.name = name;
+        this.email = email;
+    }
 
+    public UserProfileResponse() {
     }
 
     public String getName() {
@@ -21,7 +22,4 @@ public class UserProfileResponse {
         return email;
     }
 
-    public Long getId() {
-        return id;
-    }
 }

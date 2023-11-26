@@ -1,4 +1,4 @@
-package dto;
+package webapplication.dto;
 
 import java.util.Date;
 

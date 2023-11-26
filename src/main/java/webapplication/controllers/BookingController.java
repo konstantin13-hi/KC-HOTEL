@@ -1,7 +1,7 @@
 package webapplication.controllers;
 
 import entities.Booking;
-import dto.BookingRequest;
+import webapplication.dto.BookingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

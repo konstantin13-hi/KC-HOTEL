@@ -1,8 +1,8 @@
 package webapplication.services;
 
-import dto.PlaceCreateRequest;
-import dto.PlaceRequest;
-import dto.UserPlacesResponse;
+import webapplication.dto.PlaceCreateRequest;
+import webapplication.dto.PlaceRequest;
+import webapplication.dto.UserPlacesResponse;
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
