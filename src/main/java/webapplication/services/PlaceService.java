@@ -28,7 +28,7 @@ public class PlaceService {
         this.jwtService = jwtService;
     }
 
-    public ResponseEntity<Place> createPlace(PlaceCreateRequest placeCreateRequest, String token) {
+    public ResponseEntity<String> createPlace(PlaceCreateRequest placeCreateRequest, String token) {
         try {
             String userId = jwtService.extractIdFromToken(token);
             Long userIdLong = Long.parseLong(userId);
@@ -50,7 +50,7 @@ public class PlaceService {
 
             Place createdPlace = placeRepository.save(place);
 
-            return ResponseEntity.ok(createdPlace);
+            return ResponseEntity.ok("CREATED");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -130,7 +130,6 @@ public class PlaceService {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Place not found");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating place");
         }
     }

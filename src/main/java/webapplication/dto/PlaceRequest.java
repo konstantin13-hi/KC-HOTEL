@@ -17,6 +17,22 @@ public class PlaceRequest {
     private Integer maxGuests;
     private Double price;
 
+    public PlaceRequest() {
+    }
+
+    public PlaceRequest(String title, String address, List<String> addedPhotos, String description, List<String> perks, String extraInfo, Integer checkIn, Integer checkOut, Integer maxGuests, Double price) {
+        this.title = title;
+        this.address = address;
+        this.addedPhotos = addedPhotos;
+        this.description = description;
+        this.perks = perks;
+        this.extraInfo = extraInfo;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.maxGuests = maxGuests;
+        this.price = price;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -57,15 +73,54 @@ public class PlaceRequest {
         return price;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setAddedPhotos(List<String> addedPhotos) {
+        this.addedPhotos = addedPhotos;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPerks(List<String> perks) {
+        this.perks = perks;
+    }
+
+    public void setExtraInfo(String extraInfo) {
+        this.extraInfo = extraInfo;
+    }
+
+    public void setCheckIn(Integer checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(Integer checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setMaxGuests(Integer maxGuests) {
+        this.maxGuests = maxGuests;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
         return "PlaceRequest{" +
                 "title='" + title + '\'' +
                 ", address='" + address + '\'' +
-                ", addedPhotos=" + addedPhotos +
+                ", addedPhotos=" + String.join(", ", addedPhotos) +
                 ", description='" + description + '\'' +
-                ", perks=" + perks +
+                ", perks=" + String.join(", ", perks) +
                 ", extraInfo='" + extraInfo + '\'' +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +

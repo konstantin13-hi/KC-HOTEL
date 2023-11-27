@@ -1,5 +1,6 @@
 package webapplication.controllers;
 
+import org.springframework.stereotype.Controller;
 import webapplication.dto.PlaceCreateRequest;
 import webapplication.dto.PlaceRequest;
 import webapplication.dto.UserPlacesResponse;
@@ -14,7 +15,6 @@ import webapplication.services.PlaceService;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/places")
 public class PlaceController {
 
     private final PlaceService placeService;
@@ -28,7 +28,7 @@ public class PlaceController {
 
 
     @PostMapping("/places")
-    public ResponseEntity<Place> createPlace(@RequestBody PlaceCreateRequest placeCreateRequest, @CookieValue(name = "token") String token) {
+    public ResponseEntity<String> createPlace(@RequestBody PlaceCreateRequest placeCreateRequest, @CookieValue(name = "token") String token) {
         return placeService.createPlace(placeCreateRequest, token);
     }
 
@@ -47,7 +47,6 @@ public class PlaceController {
 
     @PutMapping("/places/{id}")
     public ResponseEntity<String> updatePlace(@PathVariable Long id, @RequestBody PlaceRequest placeRequest, @CookieValue(name = "token") String token) {
-        System.out.println(placeRequest.toString());
         return placeService.updatePlace(id,placeRequest,token);
     }
 

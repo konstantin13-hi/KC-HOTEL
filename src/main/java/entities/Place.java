@@ -43,6 +43,11 @@ public class Place {
 
     private Double price;
 
+    public Place(Long id, String title, String address) {
+        this.id = id;
+        this.title = title;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,7 @@
 package webapplication.dto;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UserPlacesResponse {
     private Long id;
@@ -32,6 +33,10 @@ public class UserPlacesResponse {
 
     public UserPlacesResponse() {
 
+    }
+
+    public UserPlacesResponse(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -78,4 +83,78 @@ public class UserPlacesResponse {
         return price;
     }
 
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhotos(List<String> photos) {
+        this.photos = photos;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPerks(List<String> perks) {
+        this.perks = perks;
+    }
+
+    public void setExtraInfo(String extraInfo) {
+        this.extraInfo = extraInfo;
+    }
+
+    public void setCheckIn(Integer checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public void setCheckOut(Integer checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public void setMaxGuests(Integer maxGuests) {
+        this.maxGuests = maxGuests;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserPlacesResponse that = (UserPlacesResponse) o;
+        return Objects.equals(id, that.id) && Objects.equals(title, that.title) && Objects.equals(address, that.address) && Objects.equals(photos, that.photos) && Objects.equals(description, that.description) && Objects.equals(perks, that.perks) && Objects.equals(extraInfo, that.extraInfo) && Objects.equals(checkIn, that.checkIn) && Objects.equals(checkOut, that.checkOut) && Objects.equals(maxGuests, that.maxGuests) && Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, address, photos, description, perks, extraInfo, checkIn, checkOut, maxGuests, price);
+    }
+
+    @Override
+    public String toString() {
+        return "UserPlacesResponse{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", address='" + address + '\'' +
+                ", photos=" + String.join(", ", photos) +
+                ", description='" + description + '\'' +
+                ", perks=" + String.join(", ", perks) +
+                ", extraInfo='" + extraInfo + '\'' +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", maxGuests=" + maxGuests +
+                ", price=" + price +
+                '}';
+    }
 }
