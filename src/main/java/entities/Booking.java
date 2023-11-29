@@ -62,7 +62,7 @@ public class Booking {
         return number_of_guests;
     }
 
-    public void setNumberOfGuests(Integer number_of_guests) {
+    public void setNumber_of_guests(Integer number_of_guests) {
         this.number_of_guests = number_of_guests;
     }
 

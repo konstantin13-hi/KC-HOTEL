@@ -1,5 +1,8 @@
 -- drop table users;
+-- drop table user_roles;
 -- drop table places;
+-- drop table place_photos;
+-- drop table place_perks;
 -- drop table bookings;
 
 CREATE TABLE Users (

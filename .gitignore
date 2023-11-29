@@ -15,5 +15,5 @@ gradlew.bat
 # IntelliJ IDEA
 .idea/
 
-/src/main/resources/static/uploads/
+#/src/main/resources/static/uploads/
 

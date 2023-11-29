@@ -11,7 +11,6 @@ import webapplication.services.BookingService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookings")
 public class BookingController {
 
     private final BookingService bookingService;
@@ -21,18 +20,17 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping
+    @PostMapping("/bookings")
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest, @CookieValue(name = "token") String token) {
         try {
             System.out.println(bookingRequest.toString());
             return ResponseEntity.ok(bookingService.createBooking(bookingRequest, token));
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
-    @GetMapping
+    @GetMapping("/bookings")
     public ResponseEntity<List<Booking>> getUserBookings(@CookieValue(name = "token") String token) {
         List<Booking> userBookings = bookingService.getUserBookings(token);
         return ResponseEntity.ok(userBookings);

@@ -48,8 +48,6 @@ public class PlaceControllerTest {
     @MockBean
     private PlaceService placeService;
 
-    @InjectMocks
-    private PlaceController placeController;
 
     @Nested
     public class TTT {

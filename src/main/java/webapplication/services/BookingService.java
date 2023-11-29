@@ -30,7 +30,7 @@ public class BookingService {
             Booking booking = new Booking();
             booking.setCheckIn(bookingRequest.getCheckIn());
             booking.setCheckOut(bookingRequest.getCheckOut());
-            booking.setNumberOfGuests(bookingRequest.getNumberOfGuests());
+            booking.setNumber_of_guests(bookingRequest.getNumberOfGuests());
             booking.setName(bookingRequest.getName());
             booking.setPhone(bookingRequest.getPhone());
             booking.setPrice(bookingRequest.getPrice());
