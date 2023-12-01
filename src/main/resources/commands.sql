@@ -38,3 +38,20 @@ CREATE TABLE Bookings (
                           CONSTRAINT valid_dates CHECK (check_in < check_out)
 );
 
+
+
+CREATE TABLE user_roles (
+                            id SERIAL PRIMARY KEY,
+                            name VARCHAR(255) NOT NULL
+);
+
+INSERT INTO user_roles (name) VALUES ('ROLE_USER');
+
+INSERT INTO user_roles (name) VALUES ('ROLE_ADMIN');
+
+INSERT INTO Users (name, email, password)
+VALUES ('user100', 'example@email.com', '$2a$10$4VNsjdzIvZ8L5GtUSEv9dud6nWck4zzY5ffPSIy/s54r6vhE83tuK');
+
+
+insert into user_user_roles(user_id, role_id)
+values (14,2);

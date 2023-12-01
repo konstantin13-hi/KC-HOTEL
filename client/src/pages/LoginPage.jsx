@@ -10,12 +10,11 @@ export default function LoginPage(){
           const [errors, setErrors] = useState({});
     const{setUser} =  useContext(UserContext);
 
-    
+
 
     async function handleLoginSubmit(ev){
         ev.preventDefault();
         try{
-            //////??????????? data
         const {data} = await axios.post('http://localhost:8080/login',{email,password});
                  setUser(data);
                 alert('Login successful');
@@ -37,23 +36,23 @@ export default function LoginPage(){
     if (redirect){
         return <Navigate to={'/'}/>
     }
-    
+
     return (
-       <div className="flex items-center justify-around grow"> 
+       <div className="flex items-center justify-around grow">
         <div className="mb-64">
             <h1 className="text-center">Login</h1>
 <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
-    <input 
-    type="email" 
+    <input
+    type="email"
     value={email}
     onChange={(event) => {
                       setEmail(event.target.value);
                       setErrors({ ...errors, email: undefined });
                     }}
-    
+
     placeholder="your@mail.com"/>
      {errors.email && <div className="error-message">{errors.email}</div>}
-    <input type="text" 
+    <input type="text"
         value={password}
           onChange={(event) => {
                           setPassword(event.target.value);
@@ -64,7 +63,7 @@ export default function LoginPage(){
     <button className="primary">Login</button>
 </form>
      <div className="p-2 text-center">
-        Dont have an account ?  
+        Dont have an account ?
         <Link className="underline" to={"/register"}>Register here </Link>
      </div>
 

@@ -1,18 +1,19 @@
 package entities;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import webapplication.configs.UserRole;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
-public class User  {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +24,11 @@ public class User  {
     private String password;
 
 
-    @ElementCollection(targetClass = UserRole.class)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<UserRole> roles;
 
     public User() {
@@ -62,10 +65,10 @@ public class User  {
     }
 
 
-
     public String getPassword() {
         return password;
     }
+
 
 
 
