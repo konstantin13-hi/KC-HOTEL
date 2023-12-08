@@ -7,9 +7,9 @@ import PlacesPage from "./PlacesPage.jsx";
 
 export default function AccountNav(){
     const {pathname} = useLocation();
-    console.log("useLocation =" + pathname);
+
     let subpage = pathname.split('/')?.[2];
-    console.log("useLsubpage ="+subpage);
+
     if (subpage === undefined) {
     subpage = 'profile'}
     function linkClasses(type = null){

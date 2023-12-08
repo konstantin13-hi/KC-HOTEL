@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { differenceInCalendarDays } from "date-fns";
 import axios from "axios";
 import { Navigate, useLocation, useParams } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext.jsx";
 
 
 export default function BookingWidget({place}){
@@ -14,6 +14,7 @@ export default function BookingWidget({place}){
   const [phone,setPhone] = useState('');
   const [redirect,setRedirect] = useState ('');
   const {user} = useContext(UserContext);
+
    useEffect(()=>{
     if(user){
         setName(user.name);
@@ -26,14 +27,21 @@ export default function BookingWidget({place}){
   }
 
   async function bookThisPlace (){
-    const response =await axios.post('http://localhost:8080/bookings',
-    {checkIn,
-       checkOut,
-       numberOfGuests,
-       name,
-       phone,
-       placeId: place.id,
-       price: numberOfDays * place.price});
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:8080/createbookings', {
+          placeId: place.id,
+          checkIn,
+          checkOut,
+          numberOfGuests,
+          name,
+          phone,
+          price: numberOfDays * place.price
+      }, {
+          headers: {
+              Authorization: `Bearer ${token}`
+          }
+      });
+      console.log("booking+="+token)
         const bookingId = response.data.id;
         setRedirect(`/account/bookings/${bookingId}`)
    

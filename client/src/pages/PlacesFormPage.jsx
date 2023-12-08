@@ -1,17 +1,25 @@
 
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { Link, useParams } from "react-router-dom"
 import Perks from "../Perks";
 import axios from "axios";
 import PhotosUploder from "../PhotosUploder";
 import { Navigate } from "react-router-dom"
+import {UserContext} from "../UserContext.jsx";
 
 
 export default function PlacesFormPage(){
-   const {id} = useParams();
+    const {id} = useParams();
+        const {user,ready,setUser} = useContext(UserContext);
 
-   const{token} =  useContext(UserContext);
 
+    if(!ready){
+        return "Loading Loading Loading Loading Loading";
+    }
+    if (!user) {
+        return <Navigate to={'/login'} />
+    }
+    const token = localStorage.getItem('token');
 
     const[title,setTitle] = useState('');
     const[address,setAddress] = useState('');
@@ -24,29 +32,29 @@ export default function PlacesFormPage(){
     const[addedPhotos,setAddedPhotos] = useState([]);
     const [redirect,setRedirect] = useState(null);
     const [price,setPrice] = useState(1000);
-    
 
 
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (!id) {
-          return;
+            return;
         }
-       axios.get('http://localhost:8080/places/'+id).then(response =>{
-        const {data} =response ;
-        console.log(data.title);
-        setTitle(data.title);
-        setAddress (data.address);
-        setAddedPhotos (data.photos);
-        setDescription (data.description);
-        setPerks(data.perks);
-        setExtraInfo(data.extraInfo);
-        setCheckIn(data.checkIn);
-        setCheckOut(data.checkOut);
-        setMaxGuests(data.maxGuests);
-        setPrice(data.price);
-       })
-     
-      }, [id]);
+        axios.get('http://localhost:8080/places/'+id).then(response =>{
+            const {data} =response ;
+            setTitle(data.title);
+            setAddress (data.address);
+            setAddedPhotos (data.photos);
+            setDescription (data.description);
+            setPerks(data.perks);
+            setExtraInfo(data.extraInfo);
+            setCheckIn(data.checkIn);
+            setCheckOut(data.checkOut);
+            setMaxGuests(data.maxGuests);
+            setPrice(data.price);
+        })
+
+    }, [id]);
 
     function inputHeader(text){
         return (
@@ -62,8 +70,8 @@ export default function PlacesFormPage(){
     function preInput(header,description){
         return (
             <>
-            {inputHeader(header)}
-            {inputDescription(description)}
+                {inputHeader(header)}
+                {inputDescription(description)}
             </>
         )
     }
@@ -72,20 +80,29 @@ export default function PlacesFormPage(){
     async function savePlace(ev) {
         ev.preventDefault ();
         const placeData = {
-        title, address, addedPhotos, 
-        description,
-         perks, extraInfo,
-          checkIn,
-          checkOut, maxGuests,price,
+            title, address, addedPhotos,
+            description,
+            perks, extraInfo,
+            checkIn,
+            checkOut, maxGuests,price,
         };
         if (id) {
 //      const {data}  =  await axios.put('/places', {id, ...placeData});
-     const { data } = await axios.put(`http://localhost:8080/places/${id}`, {...placeData})
-       console.log(data);
-        setRedirect ('/account/places');
+            const { data } = await axios.put(`http://localhost:8080/places/${id}`, {...placeData},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,}
+                });
+            console.log(data);
+            setRedirect ('/account/places');
         } else {
-         await axios.post('http://localhost:8080/places', placeData)
-        setRedirect (true);
+
+            await axios.post('http://localhost:8080/places', placeData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,}
+                });
+            setRedirect ('/account/places');
         }
     }
 
@@ -97,57 +114,57 @@ export default function PlacesFormPage(){
 
 
 
-return (
+    return (
 
-         <div className="p-8">
-                    <form onSubmit={savePlace}>
-                        {preInput('Title','Title for your place....')}
-                        <input type ="text" value={title} onChange={event => {setTitle(event.target.value)}} placeholder="title............"/>
+        <div className="p-8">
+            <form onSubmit={savePlace}>
+                {preInput('Title','Title for your place....')}
+                <input type ="text" value={title} onChange={event => {setTitle(event.target.value)}} placeholder="title............"/>
 
-                        {preInput('Address','Address to this place....')}
-                        <input type ="text" value={address} onChange={event => {setAddress(event.target.value)}} placeholder="address............"/>
+                {preInput('Address','Address to this place....')}
+                <input type ="text" value={address} onChange={event => {setAddress(event.target.value)}} placeholder="address............"/>
 
-                        {preInput('Photos','more = better')}
-                       <PhotosUploder addedPhotos={addedPhotos} onChange={setAddedPhotos}/>
+                {preInput('Photos','more = better')}
+                <PhotosUploder addedPhotos={addedPhotos} onChange={setAddedPhotos}/>
 
-                       {preInput('Description','description of the place')}
-                        <textarea value={description} onChange={event => {setDescription(event.target.value)}}/>
+                {preInput('Description','description of the place')}
+                <textarea value={description} onChange={event => {setDescription(event.target.value)}}/>
 
-                        {preInput('Perks','select all the perks of your place')}
-                        <div className="grid gap-1 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 ">
-                            <Perks selected={perks} onChange={setPerks}/>
-                        </div>
-                 
+                {preInput('Perks','select all the perks of your place')}
+                <div className="grid gap-1 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 ">
+                    <Perks selected={perks} onChange={setPerks}/>
+                </div>
 
-                  {preInput('Extra Info','house rules , ect')}
-                 <textarea value={extraInfo} onChange={event => {setExtraInfo(event.target.value)}} />
 
-                 {preInput('Check in&out times','add check in and out')}
+                {preInput('Extra Info','house rules , ect')}
+                <textarea value={extraInfo} onChange={event => {setExtraInfo(event.target.value)}} />
+
+                {preInput('Check in&out times','add check in and out')}
                 <div className="grid gap-2 grid-cols-2 md:grid-4">
-                        <div >
-                            <h3 className="mt-2 -mb-1">Check in time </h3>
-                            <input type="text" value={checkIn} onChange={event => {setCheckIn(event.target.value)}} placeholder="14:00"/> 
-                        </div>
+                    <div >
+                        <h3 className="mt-2 -mb-1">Check in time </h3>
+                        <input type="text" value={checkIn} onChange={event => {setCheckIn(event.target.value)}} placeholder="14:00"/>
+                    </div>
 
-                        <div>
-                            <h3 className="mt-2 -mb-1">Check out time </h3>
-                            <input type="text" value={checkOut} onChange={event => {setCheckOut(event.target.value)}} /> 
-                        </div>
+                    <div>
+                        <h3 className="mt-2 -mb-1">Check out time </h3>
+                        <input type="text" value={checkOut} onChange={event => {setCheckOut(event.target.value)}} />
+                    </div>
 
-                        <div>
-                            <h3 className="mt-2 -mb-1">Max number of guest </h3>
-                            <input type="number" value={maxGuests} onChange={event => {setMaxGuests(event.target.value)}} /> 
-                        </div>
+                    <div>
+                        <h3 className="mt-2 -mb-1">Max number of guest </h3>
+                        <input type="number" value={maxGuests} onChange={event => {setMaxGuests(event.target.value)}} />
+                    </div>
 
-                        <div>
-                            <h3 className="mt-2 -mb-1">price per night </h3>
-                            <input type="number" value={price} onChange={event => {setPrice(event.target.value)}} /> 
-                        </div>
-                            
+                    <div>
+                        <h3 className="mt-2 -mb-1">price per night </h3>
+                        <input type="number" value={price} onChange={event => {setPrice(event.target.value)}} />
+                    </div>
+
                 </div>
                 <button className="primary my-4">Save</button>
-                </form>
+            </form>
         </div>
-)
+    )
 
 }

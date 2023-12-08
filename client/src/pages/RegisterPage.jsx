@@ -19,7 +19,6 @@ export default function RegisterPage(){
           });
           alert('Registration successful. Now you can log in');
         } catch (e) {
-          console.log(e);
           if (e.response && e.response.status === 400 && e.response.data) {
             const errorData = e.response.data;
             setErrors(errorData);
@@ -73,7 +72,7 @@ export default function RegisterPage(){
             </div>
           </div>
         </div>
-      );x
+      );
 
 //
 //    async function registerUser(event){

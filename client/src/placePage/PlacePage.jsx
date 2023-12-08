@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import BookingWidget from "../BookingWidget";
-import PlaceGallery from "../PlaceGallery";
-import AddressLink from "../AddressLink";
+import BookingWidget from "./BookingWidget.jsx";
+import PlaceGallery from "../PlaceGallery.jsx";
+import AddressLink from "../AddressLink.jsx";
 export default function PlacePage(){
   const {id} = useParams();
   const [place,setPlace] = useState(null);
@@ -47,7 +47,6 @@ export default function PlacePage(){
 
   return (
     <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-4">
-        dsdsdsd
         <h1 className="text-2xl">{place.title}</h1>
        <AddressLink>{place.address}</AddressLink>
       <PlaceGallery place={place}/>

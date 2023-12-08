@@ -1,21 +1,40 @@
 
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import AccountNav from "./AccountNav.jsx";
 import axios from "axios";
 import PlaceImg from "../PlaceImg.jsx";
 import format from "date-fns/format";
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
-import { Link } from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import BookingDates from "../BookingDates.jsx";
+import {UserContext} from "../UserContext.jsx";
 
 export default function BookingsPage(){
     const [booking,setBookings] = useState([]);
+    const token = localStorage.getItem('token');
+
+
+    const {user,ready,setUser} = useContext(UserContext);
+
+
+
+
+
      useEffect(()=>{
-        axios.get('http://localhost:8080/bookings').then(response =>{
+        axios.get('http://localhost:8080/bookings',
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,}
+            }
+            ).then(response =>{
             setBookings(response.data)
 
         })
      },[])
+
+    if (ready && !user) {
+        return <Navigate to={'/login'} />
+    }
 
     return (
         <div>

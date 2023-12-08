@@ -10,7 +10,6 @@ export default function IndexPage(){
    useEffect(()=>{
     axios.get('http://localhost:8080/places').then(response=>{
       setPlaces(response.data);
-      console.log(response.data)
     })
    },[])
 

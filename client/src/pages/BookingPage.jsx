@@ -1,16 +1,31 @@
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {Navigate, useParams} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import AddressLink from "../AddressLink";
 import PlaceGallery from "../PlaceGallery";
 import BookingDates from "../BookingDates";
+import {UserContext} from "../UserContext.jsx";
 
 export default function BookingPage() {
   const {id} = useParams();
   const [booking,setBooking] = useState(null);
+  const {user,ready,setUser} = useContext(UserContext);
+  const token = localStorage.getItem('token');
+  console.log("render component book")
+
+
+
+
+
+
+
   useEffect(() => {
+    console.log("useEffect in book")
     if (id) {
-      axios.get('http://localhost:8080/bookings').then(response => {
+      axios.get('http://localhost:8080/bookings', {
+        headers: {
+          Authorization: `Bearer ${token}`,}
+      }).then(response => {
         const foundBooking = response.data.find(({id}) => id === id);
         if (foundBooking) {
           setBooking(foundBooking);
@@ -19,8 +34,16 @@ export default function BookingPage() {
     }
   }, [id]);
 
-  if (!booking) {
-    return '';
+  if ( ready &&!user) {
+    console.log("Navigate in book")
+    return <Navigate to={'/login'} />
+  }
+
+
+
+  if(!booking){
+    console.log("loding in book")
+    return "Loading Loading Loading Loading Loading";
   }
 
   return (

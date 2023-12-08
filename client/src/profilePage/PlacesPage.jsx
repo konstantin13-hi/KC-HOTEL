@@ -1,4 +1,4 @@
-import { useState ,useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import { Link, useParams } from "react-router-dom"
 import Perks from "../Perks.jsx";
 import axios from "axios";
@@ -8,19 +8,38 @@ import PlacesForm from "../pages/PlacesFormPage.jsx";
 import PlacesFormPage from "../pages/PlacesFormPage.jsx";
 import AccountNav from "./AccountNav.jsx";
 import PlaceImg from "../PlaceImg.jsx";
+import {UserContext} from "../UserContext.jsx";
 export default function PlacesPage(){
     const [places, setPlaces] = useState([]);
+    const token = localStorage.getItem('token');
+    const [loading, setLoading] = useState(true);
+
+    const {user,ready,setUser} = useContext(UserContext);
+
+
+
+
       
     useEffect(() => {
-        axios.get('http://localhost:8080/user-places')
+        axios.get('http://localhost:8080/user-places',  {
+            headers: {
+                Authorization: `Bearer ${token}`,}
+        })
           .then(({ data }) => {
-            console.log(data);
+
             setPlaces(data);
+              setLoading(false);
           })
           .catch(error => {
             console.error('error bla bla bla', error);
+              setLoading(false);
           });
-      }, []); 
+      }, []);
+
+    if (ready && !user) {
+        return <Navigate to={'/login'} />
+    }
+
 
  
    return (
@@ -35,16 +54,22 @@ export default function PlacesPage(){
          </Link>
        </div>
        <div className="mt-2">
-         {places.length > 0 && places.map(place => (
-           <Link to={`/account/places/${place.id}`} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl mt-8" key={place.id}>
-             <div className="flex w-32 h-32 bg-gray-300 ">
-               <PlaceImg place={place} />
-             </div>
-             <div className="grow-0 shrink">
-               <h2 className="text-xl">{place.title}</h2>
-               <p className="text-sm mt-2">{place.description}</p>
-             </div>
-           </Link>
+
+           {loading ? (
+               // Если данные еще загружаются, отображаем сообщение Loading
+               'Loading...'
+           ) : (
+               // Иначе, отображаем список places
+               places.length > 0 && places.map(place => (
+                   <Link to={`/account/places/${place.id}`} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl mt-8" key={place.id}>
+                       <div className="flex w-32 h-32 bg-gray-300">
+                           <PlaceImg place={place} />
+                       </div>
+                       <div className="grow-0 shrink">
+                           <h2 className="text-xl">{place.title}</h2>
+                           <p className="text-sm mt-2">{place.description}</p>
+                       </div>
+                   </Link>)
          ))}
        </div>
      </div>

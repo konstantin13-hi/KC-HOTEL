@@ -11,7 +11,7 @@ import { UserContextProvider } from './UserContext'
 import ProfilePage from './profilePage/ProfilePage.jsx'
 import PlacesPage from './profilePage/PlacesPage.jsx'
 import PlacesFormPage from './pages/PlacesFormPage'
-import PlacePage from './pages/PlacePage'
+import PlacePage from './placePage/PlacePage.jsx'
 import BookingsPage from './profilePage/BookingsPage.jsx'
 import BookingPage from './pages/BookingPage'
 
