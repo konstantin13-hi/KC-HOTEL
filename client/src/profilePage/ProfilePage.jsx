@@ -10,8 +10,19 @@ export default function ProfilePage(){
   const {user,ready,setUser} = useContext(UserContext);
   const [redirect,setRedirect] = useState(false);
   let {subpage} =useParams();
+    if (subpage === undefined){
+
+        subpage = 'profile';
+    }
 
   console.log("subpage is = "+subpage);
+
+         if(!ready){
+        return "Loading Loading Loading Loading Loading";
+      }
+    if (!redirect && ready  && !user) {
+        return <Navigate to={'/login'} />
+    }
 
 
  async function logOut(){
@@ -21,17 +32,13 @@ export default function ProfilePage(){
    setUser(null);
   }
 
-//    if (ready && !user && !redirect) {
-//       return <Navigate to={'/login'} />
-//     }
 
-//     if (redirect){
-//        return <Navigate path={'/'} />
-//      }
 
-//      if(!ready){
-//         return "Loading";
-//       }
+    if (redirect){
+       return <Navigate  to={'/'}/>
+     }
+
+
 
 
     return (
@@ -46,6 +53,7 @@ export default function ProfilePage(){
                  {subpage === 'places' && (
                    <PlacesPage />
                  )}
+
                </div>
              );
 

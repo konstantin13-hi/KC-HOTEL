@@ -12,7 +12,7 @@ import ProfilePage from './profilePage/ProfilePage.jsx'
 import PlacesPage from './profilePage/PlacesPage.jsx'
 import PlacesFormPage from './pages/PlacesFormPage'
 import PlacePage from './pages/PlacePage'
-import BookingsPage from './pages/BookingsPage'
+import BookingsPage from './profilePage/BookingsPage.jsx'
 import BookingPage from './pages/BookingPage'
 
 axios.defaults.baseURL ='http://localhost:8080'
