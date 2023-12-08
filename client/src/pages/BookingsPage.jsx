@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import AccountNav from "./AccountNav";
+import AccountNav from "../profilePage/AccountNav.jsx";
 import axios from "axios";
 import PlaceImg from "../PlaceImg";
 import format from "date-fns/format";
