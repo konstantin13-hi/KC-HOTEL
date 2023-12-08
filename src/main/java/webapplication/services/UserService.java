@@ -1,11 +1,16 @@
 package webapplication.services;
 
 import dto.RegistrationUserDto;
+import dto.UserProfileResponse;
+import entities.UserEmailDetails;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import webapplication.Utils.JwtTokenUtils;
 import webapplication.repositories.UserRepository;
 import entities.User;
 
@@ -27,11 +32,16 @@ public class UserService implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
 
+    private  final JwtTokenUtils jwtTokenUtils;
+    private final AuthenticationManager authenticationManager;
+
     @Autowired
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, JwtTokenUtils jwtTokenUtils, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtTokenUtils = jwtTokenUtils;
+        this.authenticationManager = authenticationManager;
     }
 
     public Optional<User> findByName(String name){
@@ -50,6 +60,21 @@ public class UserService implements UserDetailsService {
 
         );
     }
+
+
+    @Transactional
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        User user = userOptional.orElseThrow(() -> new UsernameNotFoundException(String.format("User not found with email: %s", email)));
+
+        return new UserEmailDetails(
+                user.getName(),
+                user.getPassword(),
+                user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList()),
+                user.getEmail()
+        );
+    }
+
     public void createNewUser(RegistrationUserDto registrationUserDto){
         User user = new User();
         user.setName(registrationUserDto.getName());
@@ -58,6 +83,26 @@ public class UserService implements UserDetailsService {
         user.setRoles(Set.of(userRoleRepository.findByName(ROLE_USER).get()));
         userRepository.save(user);
     }
+
+    public ResponseEntity<?> getProfile(String token) {
+        if(token !=null) {
+            String subToken = token.substring(7);
+            System.out.println(subToken);
+            String result = jwtTokenUtils.getEmail(subToken);
+            Optional<User> userOptional = userRepository.findByEmail(result);
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                UserProfileResponse userProfile = new UserProfileResponse(user.getName(), user.getEmail(), user.getId());
+                return ResponseEntity.ok(userProfile);
+            }
+        }
+        return ResponseEntity.ok(null);
+
+
+    }
+
+
+
 
 //    public void registerUser(UserRegistrationRequest userRegistrationRequest) {
 //        Optional<User> existingUser = userRepository.findByEmail(userRegistrationRequest.getEmail());

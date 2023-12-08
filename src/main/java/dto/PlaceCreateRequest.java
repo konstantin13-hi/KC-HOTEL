@@ -14,6 +14,9 @@ public class PlaceCreateRequest {
     private Integer maxGuests;
     private Double price;
 
+    public PlaceCreateRequest() {
+    }
+
     public String getTitle() {
         return title;
     }

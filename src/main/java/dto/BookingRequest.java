@@ -12,6 +12,9 @@ public class BookingRequest {
     private String phone;
     private double price;
 
+    public BookingRequest() {
+    }
+
     public Long getPlaceId() {
         return placeId;
     }

@@ -10,30 +10,28 @@ export default function ProfilePage(){
   const {user,ready,setUser} = useContext(UserContext);
   const [redirect,setRedirect] = useState(false);
   let {subpage} =useParams();
-  if (subpage === undefined){
-   
-    subpage = 'profile';
-  }
-  console.log(subpage);
+
+  console.log("subpage is = "+subpage);
 
 
  async function logOut(){
-   await axios.post('http://localhost:8080/logout');
+   await axios.post('http://localhost:8080/logOut');
+   localStorage.removeItem('token');
      setRedirect(true);
    setUser(null);
   }
 
-   if (ready && !user && !redirect) {
-      return <Navigate to={'/login'} />
-    }
+//    if (ready && !user && !redirect) {
+//       return <Navigate to={'/login'} />
+//     }
 
-    if (redirect){
-       return <Navigate path={'/'} />
-     }
+//     if (redirect){
+//        return <Navigate path={'/'} />
+//      }
 
-     if(!ready){
-        return "Loading";
-      }
+//      if(!ready){
+//         return "Loading";
+//       }
 
 
     return (

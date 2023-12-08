@@ -6,26 +6,31 @@ import entities.Place;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import webapplication.JwtTokenProvider;
+import webapplication.Utils.JwtTokenUtils;
 import webapplication.repositories.BookingRepository;
+import webapplication.repositories.UserRepository;
 
 import java.util.List;
 
 @Service
 public class BookingService {
 
+    private final UserRepository userRepository;
     private final BookingRepository bookingRepository;
-    private final JwtTokenProvider jwtService;
-
+    private final JwtTokenUtils jwtTokenUtils;
     @Autowired
-    public BookingService(BookingRepository bookingRepository, JwtTokenProvider jwtService) {
+    public BookingService(UserRepository userRepository, BookingRepository bookingRepository, JwtTokenUtils jwtTokenUtils) {
+        this.userRepository = userRepository;
         this.bookingRepository = bookingRepository;
-        this.jwtService = jwtService;
+        this.jwtTokenUtils = jwtTokenUtils;
     }
+
 
     public Booking createBooking(BookingRequest bookingRequest, String token) {
         try {
-            Long userId = Long.parseLong(jwtService.extractIdFromToken(token));
+            String subToken = token.substring(7);
+            String email = jwtTokenUtils.getEmail(subToken);
+            Long userId =  userRepository.findByEmail(email).get().getId();
 
             Booking booking = new Booking();
             booking.setCheckIn(bookingRequest.getCheckIn());
@@ -51,7 +56,9 @@ public class BookingService {
 
 
     public List<Booking> getUserBookings(String token) {
-        Long userId = Long.parseLong(jwtService.extractIdFromToken(token));
+        String subToken = token.substring(7);
+        String email = jwtTokenUtils.getEmail(subToken);
+        Long userId =  userRepository.findByEmail(email).get().getId();
         return bookingRepository.findByUserId(userId);
     }
 }

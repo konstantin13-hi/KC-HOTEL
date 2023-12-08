@@ -9,7 +9,6 @@ import RegisterPage from './pages/RegisterPage'
 import axios from 'axios'
 import { UserContextProvider } from './UserContext'
 import ProfilePage from './pages/ProfilePage'
-//yarn dev
 import PlacesPage from './pages/PlacesPage'
 import PlacesFormPage from './pages/PlacesFormPage'
 import PlacePage from './pages/PlacePage'

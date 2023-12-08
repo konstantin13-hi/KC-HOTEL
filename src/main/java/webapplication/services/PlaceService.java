@@ -9,8 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
-import webapplication.JwtTokenProvider;
+import webapplication.Utils.JwtTokenUtils;
 import webapplication.repositories.PlaceRepository;
+import webapplication.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,18 +21,54 @@ import java.util.stream.Collectors;
 public class PlaceService {
 
     private final PlaceRepository placeRepository;
-    private final JwtTokenProvider jwtService;
+
+    private final UserRepository userRepository;
+    private final JwtTokenUtils jwtTokenUtils;
+
 
     @Autowired
-    public PlaceService(PlaceRepository placeRepository, JwtTokenProvider jwtService) {
+    public PlaceService(PlaceRepository placeRepository, UserRepository userRepository, JwtTokenUtils jwtTokenUtils) {
         this.placeRepository = placeRepository;
-        this.jwtService = jwtService;
+        this.userRepository = userRepository;
+        this.jwtTokenUtils = jwtTokenUtils;
     }
 
-    public ResponseEntity<Place> createPlace(PlaceCreateRequest placeCreateRequest, String token) {
+//    public ResponseEntity<Place> createPlace(PlaceCreateRequest placeCreateRequest, String token) {
+//        try {
+//            String userId = jwtService.extractIdFromToken(token);
+//            Long userIdLong = Long.parseLong(userId);
+//
+//            Place place = new Place();
+//            User owner = new User();
+//            owner.setId(userIdLong);
+//            place.setOwnerId(owner);
+//            place.setTitle(placeCreateRequest.getTitle());
+//            place.setAddress(placeCreateRequest.getAddress());
+//            place.setPhotos(placeCreateRequest.getAddedPhotos());
+//            place.setDescription(placeCreateRequest.getDescription());
+//            place.setPerks(placeCreateRequest.getPerks());
+//            place.setExtraInfo(placeCreateRequest.getExtraInfo());
+//            place.setCheckIn(placeCreateRequest.getCheckIn());
+//            place.setCheckOut(placeCreateRequest.getCheckOut());
+//            place.setMaxGuests(placeCreateRequest.getMaxGuests());
+//            place.setPrice(placeCreateRequest.getPrice());
+//
+//            Place createdPlace = placeRepository.save(place);
+//
+//            return ResponseEntity.ok(createdPlace);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+
+        public ResponseEntity<?> createPlace(PlaceCreateRequest placeCreateRequest, String token) {
         try {
-            String userId = jwtService.extractIdFromToken(token);
-            Long userIdLong = Long.parseLong(userId);
+            String subToken = token.substring(7);
+            String email = jwtTokenUtils.getEmail(subToken);
+
+
+            Long userIdLong = userRepository.findByEmail(email).get().getId();
 
             Place place = new Place();
             User owner = new User();
@@ -53,14 +90,17 @@ public class PlaceService {
             return ResponseEntity.ok(createdPlace);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
 
-    public ResponseEntity<List<UserPlacesResponse>> getUserPlaces(@CookieValue(name = "token") String token) {
+
+    public ResponseEntity<List<UserPlacesResponse>> getUserPlaces(String token) {
         try {
-            Long ownerId = Long.parseLong(jwtService.extractIdFromToken(token));
+            String subToken = token.substring(7);
+            String email = jwtTokenUtils.getEmail(subToken);
+            Long ownerId =  userRepository.findByEmail(email).get().getId();
             User owner = new User();
             owner.setId(ownerId);
             List<Place> places = placeRepository.findByOwnerId(owner);
@@ -102,7 +142,9 @@ public class PlaceService {
 
     public ResponseEntity<String> updatePlace(Long id, PlaceRequest placeRequest, String token) {
         try {
-            Long ownerId = Long.parseLong(jwtService.extractIdFromToken(token));
+            String subToken = token.substring(7);
+            String email = jwtTokenUtils.getEmail(subToken);
+            Long ownerId =  userRepository.findByEmail(email).get().getId();
             Optional<Place> optionalPlace = placeRepository.findById(id);
 
             if (optionalPlace.isPresent()) {

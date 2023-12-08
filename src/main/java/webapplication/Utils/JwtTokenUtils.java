@@ -1,6 +1,7 @@
 package webapplication.Utils;
 
 
+import entities.UserEmailDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -55,6 +56,28 @@ public class JwtTokenUtils {
                 .signWith(Keys.hmacShaKeyFor(secret))
                 .compact();
     }
+    public String generateTokenWithEmail(UserDetails userDetails) {
+        Map<String, Object> claims = new HashMap<>();
+        List<String> rolesList = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+        claims.put("roles", rolesList);
+
+        Date issuedDate = new Date();
+        Date expiredDate = new Date(issuedDate.getTime() + jwtLifetime.toMillis());
+
+        if (userDetails instanceof UserEmailDetails) {
+            claims.put("email", ((UserEmailDetails) userDetails).getEmail());
+        }
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(issuedDate)
+                .setExpiration(expiredDate)
+                .signWith(Keys.hmacShaKeyFor(secret))
+                .compact();
+    }
 
     public String getUsername(String token) {
         return parseToken(token).getSubject();
@@ -64,7 +87,13 @@ public class JwtTokenUtils {
         return parseToken(token).get("roles", List.class);
     }
 
-    public Claims parseToken(String token) {
-        return Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(secret)).build().parseClaimsJws(token).getBody();
+    public String getEmail(String token) {
+        return parseToken(token).get("email", String.class);
     }
+
+
+    public Claims parseToken(String token) {
+        Claims result = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(secret)).build().parseClaimsJws(token).getBody();
+        System.out.println(result);
+        return  result;}
 }

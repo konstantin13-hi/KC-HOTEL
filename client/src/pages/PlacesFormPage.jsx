@@ -10,6 +10,8 @@ import { Navigate } from "react-router-dom"
 export default function PlacesFormPage(){
    const {id} = useParams();
 
+   const{token} =  useContext(UserContext);
+
 
     const[title,setTitle] = useState('');
     const[address,setAddress] = useState('');
@@ -73,16 +75,16 @@ export default function PlacesFormPage(){
         title, address, addedPhotos, 
         description,
          perks, extraInfo,
-          checkIn, 
+          checkIn,
           checkOut, maxGuests,price,
         };
         if (id) {
 //      const {data}  =  await axios.put('/places', {id, ...placeData});
-     const { data } = await axios.put(`http://localhost:8080/places/${id}`, {...placeData});
+     const { data } = await axios.put(`http://localhost:8080/places/${id}`, {...placeData})
        console.log(data);
         setRedirect ('/account/places');
         } else {
-         await axios.post('http://localhost:8080/places', placeData);
+         await axios.post('http://localhost:8080/places', placeData)
         setRedirect (true);
         }
     }

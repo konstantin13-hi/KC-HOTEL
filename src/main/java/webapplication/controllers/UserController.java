@@ -53,20 +53,7 @@
 //    }
 //
 //
-//    @GetMapping("/authenticated")
-//    public String pageForAuthenticatedUsers(){
-//        return "secured part of web service";
-//    }
-//
-//    @GetMapping("/")
-//    public String homePage(){
-//        return "home";
-//    }
-//
-//    @GetMapping ("/login")
-//    public String loginPage(){
-//        return "hi";
-//    }
+
 //
 //
 //

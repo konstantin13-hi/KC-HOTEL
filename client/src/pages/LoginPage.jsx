@@ -7,8 +7,11 @@ export default function LoginPage(){
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
     const[redirect,setRedirect] = useState(false);
-          const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
     const{setUser} =  useContext(UserContext);
+    const{setReady} =  useContext(UserContext);
+
+
 
 
 
@@ -16,9 +19,13 @@ export default function LoginPage(){
         ev.preventDefault();
         try{
         const {data} = await axios.post('http://localhost:8080/login',{email,password});
+        const token = data.token;
+        localStorage.setItem('token', token);
+
                  setUser(data);
                 alert('Login successful');
                 setRedirect(true);
+
         }
         catch(e){
         console.log(e);

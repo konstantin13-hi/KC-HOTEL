@@ -22,10 +22,10 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest, @CookieValue(name = "token") String token) {
+    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest, @RequestHeader(name= "Authorization" , required = false) String authorizationHeader) {
         try {
             System.out.println(bookingRequest.toString());
-            return ResponseEntity.ok(bookingService.createBooking(bookingRequest, token));
+            return ResponseEntity.ok(bookingService.createBooking(bookingRequest, authorizationHeader));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -33,8 +33,8 @@ public class BookingController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Booking>> getUserBookings(@CookieValue(name = "token") String token) {
-        List<Booking> userBookings = bookingService.getUserBookings(token);
+    public ResponseEntity<List<Booking>> getUserBookings(@RequestHeader(name= "Authorization" , required = false) String authorizationHeader) {
+        List<Booking> userBookings = bookingService.getUserBookings(authorizationHeader);
         return ResponseEntity.ok(userBookings);
     }
 
