@@ -1,6 +1,9 @@
--- drop table users;
--- drop table places;
--- drop table bookings;
+drop table users;
+drop table places;
+drop table bookings;
+  drop table user_user_roles;
+  drop table place_photos;
+  drop table place_perks;
 
 CREATE TABLE Users (
                        id SERIAL PRIMARY KEY,
