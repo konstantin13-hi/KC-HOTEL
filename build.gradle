@@ -5,7 +5,7 @@
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.4/samples
  */
 plugins {
-    id 'org.springframework.boot' version '2.5.5'
+    id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
@@ -16,7 +16,6 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.11
 
 
 repositories {
