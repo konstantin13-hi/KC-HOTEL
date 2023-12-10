@@ -24,13 +24,6 @@ export default function ProfilePage(){
         return <Navigate to={'/login'} />
     }
 
-      if(!ready){
-          return "Loading";
-        }
-
-     if (!user) {
-          return <Navigate to={'/login'} />
-        }
 
 
 
