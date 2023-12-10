@@ -11,7 +11,7 @@ import webapplication.services.BookingService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookings")
+
 public class BookingController {
 
     private final BookingService bookingService;
@@ -21,18 +21,19 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @PostMapping
+    @PostMapping("/createbookings")
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest, @RequestHeader(name= "Authorization" , required = false) String authorizationHeader) {
-        try {
+//        try {
             System.out.println(bookingRequest.toString());
+            System.out.println("Booking token" + authorizationHeader);
             return ResponseEntity.ok(bookingService.createBooking(bookingRequest, authorizationHeader));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
     }
 
-    @GetMapping
+    @GetMapping("/bookings")
     public ResponseEntity<List<Booking>> getUserBookings(@RequestHeader(name= "Authorization" , required = false) String authorizationHeader) {
         List<Booking> userBookings = bookingService.getUserBookings(authorizationHeader);
         return ResponseEntity.ok(userBookings);

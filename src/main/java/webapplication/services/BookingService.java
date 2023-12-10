@@ -27,7 +27,8 @@ public class BookingService {
 
 
     public Booking createBooking(BookingRequest bookingRequest, String token) {
-        try {
+//        try {
+        System.out.println("ssssssßdfwqąąć"+token);
             String subToken = token.substring(7);
             String email = jwtTokenUtils.getEmail(subToken);
             Long userId =  userRepository.findByEmail(email).get().getId();
@@ -48,10 +49,10 @@ public class BookingService {
             booking.setPlace(place);
 
             return bookingRepository.save(booking);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error creating booking", e);
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            throw new RuntimeException("Error creating booking", e);
+//        }
     }
 
 
