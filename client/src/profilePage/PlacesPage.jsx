@@ -61,13 +61,17 @@ export default function PlacesPage(){
            ) : (
                // Иначе, отображаем список places
                places.length > 0 && places.map(place => (
-                   <Link to={`/account/places/${place.id}`} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl mt-8" key={place.id}>
-                       <div className="flex w-32 h-32 bg-gray-300">
+                   <Link to={`/account/places/${place.id}`} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl mt-8 h-100 overflow-hidden" key={place.id}>
+                       <div className="flex w-20 h-20 bg-gray-300">
                            <PlaceImg place={place} />
                        </div>
-                       <div className="grow-0 shrink">
+                       <div className="flex-grow-1 w-full">
                            <h2 className="text-xl">{place.title}</h2>
-                           <p className="text-sm mt-2">{place.description}</p>
+                           <p className="text-sm mt-2">
+                               {place.description.length > 350
+                                   ? `${place.description.slice(0, 350)}...`
+                                   : place.description}
+                           </p>
                        </div>
                    </Link>)
          ))}
